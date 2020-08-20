@@ -17,6 +17,10 @@ public class cameraController : MonoBehaviour
     void LateUpdate()
     {
         transform.LookAt(player.transform);
-        transform.position = player.transform.position + _offset;
+
+        if (player.transform.position.y >= -4)
+        {
+            transform.position = Vector3.Slerp(transform.position, player.transform.position + _offset, 0.1f);
+        }
     }
 }

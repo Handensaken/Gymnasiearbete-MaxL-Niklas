@@ -7,11 +7,17 @@ public class playerController : MonoBehaviour
     public float xInput;
     public float zInput;
     public float movementSpeed;
+    public float jumpPower;
+    bool jumpLimiter;
     public Vector3 movement;
+    Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         movementSpeed = 2;
+        rb = GetComponent<Rigidbody>();
+        jumpPower = 300;
+        jumpLimiter = false;
     }
 
     // Update is called once per frame
@@ -20,7 +26,20 @@ public class playerController : MonoBehaviour
         xInput = Input.GetAxis("Horizontal");       //Gets Input for use on X-axis
         zInput = Input.GetAxis("Vertical");         //Gets input for use on Z-axis
         movement = Vector3.forward * zInput * movementSpeed * Time.deltaTime + Vector3.right * xInput * movementSpeed * Time.deltaTime;     //uses prebuilt vectors and adapts them to create a movement vector
-
         transform.Translate(movement);      //Applies new movement vector to gameObject
+        transform.rotation = Quaternion.identity;   //locks rotation
+        if (Input.GetKeyDown(KeyCode.Space) && !jumpLimiter)
+        {
+            rb.AddForce(Vector3.up * jumpPower);
+            jumpLimiter = true;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            //make jump possible
+            jumpLimiter = false;
+        }
     }
 }
