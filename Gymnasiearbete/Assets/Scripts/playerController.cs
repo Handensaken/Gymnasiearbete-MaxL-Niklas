@@ -8,6 +8,8 @@ public class playerController : MonoBehaviour
     public float zInput;
     public float movementSpeed;
     public float jumpPower;
+    public float mouseX;
+    public float MouseY;
     bool jumpLimiter;
     public Vector3 movement;
     Rigidbody rb;
@@ -18,6 +20,7 @@ public class playerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         jumpPower = 300;
         jumpLimiter = false;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -33,6 +36,13 @@ public class playerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpPower);
             jumpLimiter = true;
         }
+
+
+     /*   mouseX = Input.GetAxis("Mouse X");      //gets movement of mouse on x-axis
+        MouseY = Input.GetAxis("Mouse Y");      //-11- y-axis
+        print(mouseX);
+        print(MouseY);
+       */
     }
     private void OnCollisionEnter(Collision collision)
     {
