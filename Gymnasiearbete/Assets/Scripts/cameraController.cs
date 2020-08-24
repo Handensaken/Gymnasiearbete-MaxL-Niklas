@@ -41,7 +41,11 @@ public class cameraController : MonoBehaviour
         if (player.transform.position.y >= -4)
         {
             _offset = new Vector3(Mathf.Sin(cameraAngleY) * playerDistance, Mathf.Sin(cameraAngleX) * 5, Mathf.Cos(cameraAngleY + cameraAngleX) * playerDistance);
-            transform.position = Vector3.Slerp(transform.position, player.transform.position + _offset, 0.1f);
+            transform.position = Vector3.Slerp(transform.position, player.transform.position + _offset, 0.5f);
+        }
+        else
+        {
+            transform.LookAt(player.transform);
         }
     }
 }
