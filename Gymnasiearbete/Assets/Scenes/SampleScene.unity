@@ -401,6 +401,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 825488544}
   _offset: {x: 0, y: 0, z: 0}
+  hSpeed: 0
+  vSpeed: 0
+  yaw: 0
+  pitch: 0
+  playerDistance: 0
 --- !u!1 &825488544
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +473,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 49aae70197fabe34194fae114065efea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -526,4 +531,6 @@ MonoBehaviour:
   zInput: 0
   movementSpeed: 0
   jumpPower: 0
+  mouseX: 0
+  MouseY: 0
   movement: {x: 0, y: 0, z: 0}
