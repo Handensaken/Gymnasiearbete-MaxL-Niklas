@@ -32,15 +32,15 @@ public class SC_TPSController : MonoBehaviour
         if (characterController.isGrounded)
         {
             // We are grounded, so recalculate move direction based on axes
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 forward = transform.TransformDirection(Vector3.forward);    //Creates vectors for ease of use
             Vector3 right = transform.TransformDirection(Vector3.right);
-            float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
-            float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
-            moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+            float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;      //Sets current speed of X to input * speed if the character can move
+            float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;    //-11- but for Y axis
+            moveDirection = (forward * curSpeedX) + (right * curSpeedY);      //puts vectors together 
 
             if (Input.GetButton("Jump") && canMove)
             {
-                moveDirection.y = jumpSpeed;
+                moveDirection.y = jumpSpeed;    //makes player jump
             }
         }
 
@@ -49,20 +49,16 @@ public class SC_TPSController : MonoBehaviour
         // as an acceleration (ms^-2)
         moveDirection.y -= gravity * Time.deltaTime;
 
-        // Move the controller
-        characterController.Move(moveDirection * Time.deltaTime);
+        characterController.Move(moveDirection * Time.deltaTime); // Moves the player
 
         // Player and Camera rotation
-        if (canMove)
+        if (transform.position.y > -4)
         {
-            if (transform.position.y > -4)
-            {
-                rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
-                rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;
-                rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
-                playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
-                transform.eulerAngles = new Vector2(0, rotation.y);
-            }
+            rotation.y += Input.GetAxis("Mouse X") * lookSpeed; 
+            rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;        //gets rotation from mouse movement
+            rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);  //clamps rotation x between looklimits
+            playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);  //applies rotation to transform
+            transform.eulerAngles = new Vector2(0, rotation.y); //applies y rotation to transform
         }
     }
 }
