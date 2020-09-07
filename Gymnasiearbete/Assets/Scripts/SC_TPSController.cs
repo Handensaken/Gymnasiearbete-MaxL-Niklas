@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class SC_TPSController : MonoBehaviour
 {
 
+    public float defaultSpeed = 7.5f;
     public float speed = 7.5f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
@@ -16,6 +18,7 @@ public class SC_TPSController : MonoBehaviour
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     Vector2 rotation = Vector2.zero;
+    private Animator thisAnim;
 
     [HideInInspector]
     public bool canMove = true;
@@ -25,6 +28,7 @@ public class SC_TPSController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         rotation.y = transform.eulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
+        thisAnim.GetComponent<Animator>();
     }
 
     void Update()
@@ -42,6 +46,14 @@ public class SC_TPSController : MonoBehaviour
             {
                 moveDirection.y = jumpSpeed;    //makes player jump
             }
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                speed *= 2;
+            }
+            else
+            {
+                speed = defaultSpeed;
+            }
         }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
@@ -54,11 +66,14 @@ public class SC_TPSController : MonoBehaviour
         // Player and Camera rotation
         if (transform.position.y > -4)
         {
-            rotation.y += Input.GetAxis("Mouse X") * lookSpeed; 
+            rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
             rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;        //gets rotation from mouse movement
             rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);  //clamps rotation x between looklimits
             playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);  //applies rotation to transform
             transform.eulerAngles = new Vector2(0, rotation.y); //applies y rotation to transform
         }
+
+        thisAnim.SetFloat("speed", speed);
+
     }
 }
