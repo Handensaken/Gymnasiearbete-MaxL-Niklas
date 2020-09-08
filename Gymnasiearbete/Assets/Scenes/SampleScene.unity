@@ -418,6 +418,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1970430498}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1956800546 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4875636188139657722, guid: 43edc8596a56db542a8575316a9dcdcd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1970430498}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1956800547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +443,11 @@ MonoBehaviour:
   playerCameraParent: {fileID: 2107106661}
   lookSpeed: 6
   lookXLimit: 60
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  groundDistance: 0.3
+  thisAnim: {fileID: 1956800546}
   canMove: 1
 --- !u!143 &1956800548
 CharacterController:
@@ -573,6 +584,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1177189074535568532, guid: cc3583afdeb216c40b2166c13468bd1b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5514800146994040184, guid: cc3583afdeb216c40b2166c13468bd1b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5514800146994040190, guid: cc3583afdeb216c40b2166c13468bd1b,
         type: 3}
       propertyPath: m_MaterialTemplate
@@ -581,17 +602,17 @@ PrefabInstance:
     - target: {fileID: 5514800147278106326, guid: cc3583afdeb216c40b2166c13468bd1b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5883565
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5514800147278106326, guid: cc3583afdeb216c40b2166c13468bd1b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1733897
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5514800147278106326, guid: cc3583afdeb216c40b2166c13468bd1b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.54884547
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5514800147278106326, guid: cc3583afdeb216c40b2166c13468bd1b,
         type: 3}

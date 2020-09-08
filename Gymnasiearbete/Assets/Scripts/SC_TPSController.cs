@@ -8,23 +8,27 @@ public class SC_TPSController : MonoBehaviour
 {
 
     public float defaultSpeed = 7.5f;
-    public float speed = 7.5f;
+    public float speed = 0.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Transform playerCameraParent;
     public float lookSpeed = 6.0f;
     public float lookXLimit = 60.0f;
 
+    public LayerMask whatIsGround;
+    public float groundDistance = 0.3f;
+
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     Vector2 rotation = Vector2.zero;
-    private Animator thisAnim;
+    public Animator thisAnim;
 
     [HideInInspector]
     public bool canMove = true;
 
     void Start()
     {
+        speed = defaultSpeed;
         characterController = GetComponent<CharacterController>();
         rotation.y = transform.eulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
@@ -33,6 +37,15 @@ public class SC_TPSController : MonoBehaviour
 
     void Update()
     {
+        /*bool whore = false;
+
+        if (!whore)
+        {
+            speed = 0;
+        }*/
+
+        float test = 0;
+
         if (characterController.isGrounded)
         {
             // We are grounded, so recalculate move direction based on axes
@@ -42,20 +55,40 @@ public class SC_TPSController : MonoBehaviour
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;    //-11- but for Y axis
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);      //puts vectors together 
 
+            if (characterController.velocity == new Vector3(0.0f, 0.0f, 0.0f))
+            {
+                test = 0.0f;
+                //   whore = true;
+            }
+            /*  else
+              {
+                  // whore = false;
+                  test = 0.0f;
+              }*/
+
             if (Input.GetButton("Jump") && canMove)
             {
                 moveDirection.y = jumpSpeed;    //makes player jump
+                thisAnim.SetTrigger("jump");
             }
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                speed *= 2;
+                speed = 15;
+                if (characterController.velocity != new Vector3(0.0f, 0.0f, 0.0f))
+                {
+                    test = speed;
+                }
             }
             else
             {
                 speed = defaultSpeed;
+                if (characterController.velocity != new Vector3(0.0f, 0.0f, 0.0f))
+                {
+                    test = defaultSpeed;
+                }
             }
-        }
 
+        }
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
         // as an acceleration (ms^-2)
@@ -73,7 +106,6 @@ public class SC_TPSController : MonoBehaviour
             transform.eulerAngles = new Vector2(0, rotation.y); //applies y rotation to transform
         }
 
-        thisAnim.SetFloat("speed", speed);
-
+        thisAnim.SetFloat("speed", test);
     }
 }

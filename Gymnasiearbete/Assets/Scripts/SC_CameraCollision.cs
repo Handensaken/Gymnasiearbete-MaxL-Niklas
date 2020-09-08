@@ -37,13 +37,4 @@ public class SC_CameraCollision : MonoBehaviour
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, currentPos, Time.deltaTime * 15f);  //moves camera object to position set above
     }
-    private void LateUpdate()
-    {
-        if (transform.position.y <= -4) //Stops the camera and looks after the player when falling
-        {
-            transform.LookAt(player.transform);     //rotates the camera to always look at the player 
-            transform.position = new Vector3(transform.position.x, -4, transform.position.z);   //freezes camera y-position 
-        }
-    }
-
 }
