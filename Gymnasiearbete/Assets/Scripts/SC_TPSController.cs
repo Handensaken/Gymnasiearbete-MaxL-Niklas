@@ -55,7 +55,7 @@ public class SC_TPSController : MonoBehaviour
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;    //-11- but for Y axis
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);      //puts vectors together 
 
-            if (characterController.velocity == new Vector3(0.0f, 0.0f, 0.0f))
+            if (moveDirection == new Vector3(0.0f, 0.0f, 0.0f))
             {
                 test = 0.0f;
                 //   whore = true;
@@ -74,7 +74,7 @@ public class SC_TPSController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = 15;
-                if (characterController.velocity != new Vector3(0.0f, 0.0f, 0.0f))
+                if (moveDirection != new Vector3(0.0f, 0.0f, 0.0f))
                 {
                     test = speed;
                 }
@@ -82,12 +82,17 @@ public class SC_TPSController : MonoBehaviour
             else
             {
                 speed = defaultSpeed;
-                if (characterController.velocity != new Vector3(0.0f, 0.0f, 0.0f))
+                if (moveDirection != new Vector3(0.0f, 0.0f, 0.0f))
                 {
                     test = defaultSpeed;
                 }
             }
+            thisAnim.SetBool("grounded", true);
 
+        }
+        else
+        {
+            thisAnim.SetBool("grounded", false);
         }
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
