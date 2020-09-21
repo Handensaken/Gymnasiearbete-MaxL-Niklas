@@ -23,6 +23,8 @@ public class SC_TPSController : MonoBehaviour
     Vector2 rotation = Vector2.zero;
     public Animator thisAnim;
 
+
+
     [HideInInspector]
     public bool canMove = true;
 
@@ -37,14 +39,8 @@ public class SC_TPSController : MonoBehaviour
 
     void Update()
     {
-        /*bool whore = false;
-
-        if (!whore)
-        {
-            speed = 0;
-        }*/
-
         float test = 0;
+
 
         if (characterController.isGrounded)
         {
@@ -58,13 +54,8 @@ public class SC_TPSController : MonoBehaviour
             if (moveDirection == new Vector3(0.0f, 0.0f, 0.0f))
             {
                 test = 0.0f;
-                //   whore = true;
             }
-            /*  else
-              {
-                  // whore = false;
-                  test = 0.0f;
-              }*/
+
 
             if (Input.GetButton("Jump") && canMove)
             {
@@ -112,5 +103,30 @@ public class SC_TPSController : MonoBehaviour
         }
 
         thisAnim.SetFloat("speed", test);
+    }
+    //Fixed Update is used for physics calculations
+    void FixedUpdate()
+    {
+        Vector3 currentPos = transform.position;
+        currentPos.y += 1.0f;
+        RaycastHit ray;
+
+        Quaternion angles = transform.rotation;
+
+        angles.y *= 180 / Mathf.PI;
+        Vector3 dir = new Vector3(Mathf.Sin(angles.y)*5, 2, Mathf.Cos(angles.y)*5);
+
+        // Debug.Log(dir);
+
+        Color color = Color.red;
+
+        Debug.DrawRay(currentPos, dir, color, 0.0f);
+        if (Physics.Raycast(currentPos, dir, out ray, 10.0f))
+        {
+            if (ray.collider.CompareTag("person"))
+            {
+                Debug.Log("raycast hit person");
+            }
+        }
     }
 }
