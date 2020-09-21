@@ -108,25 +108,22 @@ public class SC_TPSController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 currentPos = transform.position;
-        currentPos.y += 1.0f;
+        currentPos.y += 2.0f;
         RaycastHit ray;
-
-        Quaternion angles = transform.rotation;
-
-        angles.y *= 180 / Mathf.PI;
-        Vector3 dir = new Vector3(Mathf.Sin(angles.y)*5, 2, Mathf.Cos(angles.y)*5);
-
-        // Debug.Log(dir);
 
         Color color = Color.red;
 
-        Debug.DrawRay(currentPos, dir, color, 0.0f);
-        if (Physics.Raycast(currentPos, dir, out ray, 10.0f))
+        Debug.DrawRay(currentPos, transform.forward*3, color, 0.0f);
+        if (Physics.Raycast(currentPos, transform.forward, out ray, 3.0f))
         {
             if (ray.collider.CompareTag("person"))
             {
-                Debug.Log("raycast hit person");
+                InitiateDialogue();
             }
         }
+    }
+    void InitiateDialogue()
+    {
+        //dialouge
     }
 }
