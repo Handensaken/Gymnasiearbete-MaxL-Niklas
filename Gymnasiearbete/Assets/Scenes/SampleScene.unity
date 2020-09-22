@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
   speed: 0
@@ -680,6 +682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
   speed: 0
@@ -741,6 +745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
   speed: 0
@@ -903,6 +909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 5
   wanderTimer: 10
   speed: 0
@@ -942,6 +950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
   speed: 0
@@ -1003,6 +1013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
   speed: 0
@@ -1064,6 +1076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
   speed: 0
@@ -1351,6 +1365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 15
   wanderTimer: 10
   speed: 0
@@ -1414,6 +1430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
   speed: 0
@@ -2015,6 +2033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63069ed157cd1664581d5389557c0b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueManager: {fileID: 430992107}
+  Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
   speed: 0
