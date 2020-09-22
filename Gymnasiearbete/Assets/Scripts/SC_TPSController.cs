@@ -28,6 +28,9 @@ public class SC_TPSController : MonoBehaviour
     public GameObject DialogueManager;
 
 
+    GameObject RayHit;
+    bool validObject = false;
+
     Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
 
     [HideInInspector]
@@ -127,6 +130,15 @@ public class SC_TPSController : MonoBehaviour
                 DialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
             }
         }
+        if (Input.GetKeyDown(KeyCode.E)&& validObject)
+        {
+            NPCS[RayHit.name].GetComponent<Generic_NPC>().SendDialogueBool(true);
+            NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
+        }
+        /*if(player is too far away from RayHit) 
+        {
+            
+        }*/
     }
     //Fixed Update is used for physics calculations
     void FixedUpdate()
@@ -142,12 +154,10 @@ public class SC_TPSController : MonoBehaviour
         {
             if (ray.collider.CompareTag("person"))
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    NPCS[ray.collider.gameObject.name].GetComponent<Generic_NPC>().SendDialogueBool(true);
-                    NPCS[ray.collider.gameObject.name].GetComponent<Generic_NPC>().TriggerDialogue();
-                }
+                RayHit = ray.collider.gameObject;
+                validObject = true;
             }
+            else { validObject = false; }
         }
     }
 }
