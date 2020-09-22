@@ -11,11 +11,16 @@ public class Generic_NPC : MonoBehaviour
 
     private NavMeshAgent agent;
     private float timer;
+
+    public float speed;
+
+    public Vector3 newPosition;
     // Start is called before the first frame update
     void OnEnable()
     {
         agent = GetComponent<NavMeshAgent>();
         timer = wanderTimer;
+        newPosition = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     // Update is called once per frame
@@ -23,13 +28,19 @@ public class Generic_NPC : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= wanderTimer)
+        if (timer >= wanderTimer)
         {
-            Vector3 newPosition = RandomNavSphere(transform.position, wanderRadius, -1);
+            newPosition = RandomNavSphere(transform.position, wanderRadius, -1);
             agent.SetDestination(newPosition);
             timer = 0;
         }
-        
+        if (transform.position != newPosition)
+        {
+            Debug.Log("new = " + newPosition);
+            Debug.Log("transform" + transform.position);
+            speed = agent.speed;
+        }
+
     }
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
