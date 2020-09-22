@@ -23,15 +23,24 @@ public class SC_TPSController : MonoBehaviour
     Vector2 rotation = Vector2.zero;
     public Animator thisAnim;
 
+    public GameObject[] NPCGameObjects;
 
+    public Dictionary<string, GameObject> NPCS; 
 
     [HideInInspector]
     public bool canMove = true;
 
     void Start()
     {
-        speed = defaultSpeed;
+
         characterController = GetComponent<CharacterController>();
+        foreach (GameObject NPC in NPCGameObjects)
+        {
+            Debug.Log(NPC);
+        }
+
+
+        speed = defaultSpeed;
         rotation.y = transform.eulerAngles.y;
         Cursor.lockState = CursorLockMode.Locked;
         thisAnim.GetComponent<Animator>();
@@ -118,12 +127,11 @@ public class SC_TPSController : MonoBehaviour
         {
             if (ray.collider.CompareTag("person"))
             {
-                InitiateDialogue();
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Debug.Log("test");
+                }
             }
         }
-    }
-    void InitiateDialogue()
-    {
-        //dialouge
     }
 }

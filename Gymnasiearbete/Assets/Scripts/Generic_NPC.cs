@@ -36,8 +36,6 @@ public class Generic_NPC : MonoBehaviour
         }
         if (transform.position != newPosition)
         {
-            Debug.Log("new = " + newPosition);
-            Debug.Log("transform" + transform.position);
             speed = agent.speed;
         }
 
@@ -53,5 +51,13 @@ public class Generic_NPC : MonoBehaviour
         NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
 
         return navHit.position;
+    }
+
+    public Dialogue dialogue;
+
+    public void TriggerDialogue()
+    {
+        //singleton pattern
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }
