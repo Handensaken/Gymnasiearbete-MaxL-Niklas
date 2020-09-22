@@ -160,7 +160,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &87790174
+--- !u!136 &87790176
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87790173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &87790177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,20 +193,28 @@ MonoBehaviour:
   dialogue:
     name: Elin
     sentences: []
---- !u!136 &87790176
-CapsuleCollider:
+--- !u!195 &87790178
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87790173}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
   m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,8 +318,9 @@ GameObject:
   - component: {fileID: 318625130}
   - component: {fileID: 318625132}
   - component: {fileID: 318625131}
+  - component: {fileID: 318625133}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,14 +337,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 421086817}
   - {fileID: 1133495007}
+  - {fileID: 421086817}
   m_Father: {fileID: 1591468402}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -141.2}
+  m_AnchoredPosition: {x: 0, y: -437}
   m_SizeDelta: {x: 260, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &318625131
@@ -362,6 +385,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318625129}
   m_CullTransparentMesh: 0
+--- !u!95 &318625133
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318625129}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b58d42a1f121644e93f8fcdce992997, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &421086816
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,8 +415,9 @@ GameObject:
   - component: {fileID: 421086817}
   - component: {fileID: 421086819}
   - component: {fileID: 421086818}
+  - component: {fileID: 421086820}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DialogueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,12 +435,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 318625130}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: -11.1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -12, y: -17.3}
+  m_SizeDelta: {x: 212.77875, y: 61.98375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421086818
 MonoBehaviour:
@@ -432,7 +475,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Some Dialogue that is '
+  m_Text: Some Dialogue that isn't very interesting
 --- !u!222 &421086819
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -441,6 +484,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421086816}
   m_CullTransparentMesh: 0
+--- !u!95 &421086820
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421086816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5b92f991e1456e4786b110c213e2e91, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &430992107
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd82cbc7a7b68b24c81a8c1a29d879e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameText: {fileID: 1133495008}
+  dialogueText: {fileID: 421086818}
+  animator: {fileID: 318625133}
 --- !u!4 &430992109
 Transform:
   m_ObjectHideFlags: 0
@@ -589,7 +654,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &916104139
+--- !u!136 &916104141
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916104138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &916104142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -608,13 +687,41 @@ MonoBehaviour:
   dialogue:
     name: Denise
     sentences: []
---- !u!136 &916104141
-CapsuleCollider:
+--- !u!195 &916104143
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916104138}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!1 &947068372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1621133610947791322, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &947068375
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947068372}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -622,13 +729,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!1 &947068372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1621133610947791322, guid: 0f2a5735966537e4a81bbb7108402140,
-    type: 3}
-  m_PrefabInstance: {fileID: 1936501065}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &947068373
+--- !u!114 &947068376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -647,20 +748,28 @@ MonoBehaviour:
   dialogue:
     name: Karl
     sentences: []
---- !u!136 &947068375
-CapsuleCollider:
+--- !u!195 &947068377
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947068372}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
   m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1133495006
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +782,7 @@ GameObject:
   - component: {fileID: 1133495009}
   - component: {fileID: 1133495008}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,7 +800,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 318625130}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -807,7 +916,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1407019576
+--- !u!136 &1407019578
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407019575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1407019579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -826,13 +949,41 @@ MonoBehaviour:
   dialogue:
     name: Olov
     sentences: []
---- !u!136 &1407019578
-CapsuleCollider:
+--- !u!195 &1407019580
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407019575}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!1 &1496132893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4314517531005343499, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1496132896
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496132893}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -840,13 +991,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!1 &1496132893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4314517531005343499, guid: 0f2a5735966537e4a81bbb7108402140,
-    type: 3}
-  m_PrefabInstance: {fileID: 1936501065}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1496132894
+--- !u!114 &1496132897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -865,13 +1010,41 @@ MonoBehaviour:
   dialogue:
     name: Kurt
     sentences: []
---- !u!136 &1496132896
-CapsuleCollider:
+--- !u!195 &1496132898
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496132893}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!1 &1589212972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4419687646333722870, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1589212975
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589212972}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -879,13 +1052,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!1 &1589212972 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4419687646333722870, guid: 0f2a5735966537e4a81bbb7108402140,
-    type: 3}
-  m_PrefabInstance: {fileID: 1936501065}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1589212973
+--- !u!114 &1589212976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -904,20 +1071,28 @@ MonoBehaviour:
   dialogue:
     name: Erik
     sentences: []
---- !u!136 &1589212975
-CapsuleCollider:
+--- !u!195 &1589212977
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1589212972}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
   m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1591468398
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +1111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1591468399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,6 +1359,7 @@ MonoBehaviour:
     name: Linda
     sentences:
     - Hello I'm Linda I tend the well. You're the innkeeper, right?
+    - i like cookies!
 --- !u!195 &1712656464
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1212,7 +1388,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1841440841
+--- !u!136 &1841440843
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841440840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1841440844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1231,20 +1421,28 @@ MonoBehaviour:
   dialogue:
     name: Hans
     sentences: []
---- !u!136 &1841440843
-CapsuleCollider:
+--- !u!195 &1841440845
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841440840}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
   m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &1891203240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1686,6 +1884,7 @@ MonoBehaviour:
   - {fileID: 1407019575}
   - {fileID: 947068372}
   - {fileID: 1841440840}
+  DialogueManager: {fileID: 430992107}
   canMove: 1
 --- !u!143 &1956800548
 CharacterController:
@@ -1790,7 +1989,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2040926462
+--- !u!136 &2040926464
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040926461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2040926465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1809,20 +2022,28 @@ MonoBehaviour:
   dialogue:
     name: Alice
     sentences: []
---- !u!136 &2040926464
-CapsuleCollider:
+--- !u!195 &2040926466
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040926461}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
   m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2107106660
 GameObject:
   m_ObjectHideFlags: 0

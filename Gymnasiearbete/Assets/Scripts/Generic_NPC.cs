@@ -6,6 +6,11 @@ using UnityEngine.AI;
 public class Generic_NPC : MonoBehaviour
 {
 
+    public GameObject DialogueManager;
+    bool activeDialogue = false;
+
+    public Transform Player;
+
     public float wanderRadius;
     public float wanderTimer;
 
@@ -26,19 +31,27 @@ public class Generic_NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= wanderTimer)
+        if (!activeDialogue)
         {
-            newPosition = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(newPosition);
-            timer = 0;
-        }
-        if (transform.position != newPosition)
-        {
-            speed = agent.speed;
-        }
 
+            timer += Time.deltaTime;
+
+            if (timer >= wanderTimer)
+            {
+                newPosition = RandomNavSphere(transform.position, wanderRadius, -1);
+                agent.SetDestination(newPosition);
+                timer = 0;
+            }
+            if (transform.position != newPosition)
+            {
+                speed = agent.speed;
+            }
+        }
+        else
+        {
+            transform.LookAt(Player);
+            activeDialogue = DialogueManager.GetComponent<DialogueManager>().GiveBool();
+        }
     }
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
@@ -58,6 +71,19 @@ public class Generic_NPC : MonoBehaviour
     public void TriggerDialogue()
     {
         //singleton pattern
+        CancelMovement();
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    }
+    public string GiveName()
+    {
+        return dialogue.name;
+    }
+    void CancelMovement()
+    {
+        newPosition = transform.position;
+    }
+    public void SendDialogueBool(bool reciever)
+    {
+        activeDialogue = reciever;
     }
 }

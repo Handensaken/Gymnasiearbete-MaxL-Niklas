@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
@@ -24,19 +25,23 @@ public class SC_TPSController : MonoBehaviour
     public Animator thisAnim;
 
     public GameObject[] NPCGameObjects;
+    public GameObject DialogueManager;
 
-    public Dictionary<string, GameObject> NPCS; 
+
+    Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
 
     [HideInInspector]
     public bool canMove = true;
-
+    //Start is called before the first frame update
     void Start()
     {
 
         characterController = GetComponent<CharacterController>();
+        //Create string, GameObject dictionary from GameObject array
         foreach (GameObject NPC in NPCGameObjects)
         {
-            Debug.Log(NPC);
+            NPC.name = NPC.GetComponent<Generic_NPC>().GiveName();
+            NPCS.Add(NPC.name, NPC);
         }
 
 
@@ -48,7 +53,7 @@ public class SC_TPSController : MonoBehaviour
 
     void Update()
     {
-        float test = 0;
+        float exportSpeed = 0;
 
 
         if (characterController.isGrounded)
@@ -60,23 +65,24 @@ public class SC_TPSController : MonoBehaviour
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;    //-11- but for Y axis
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);      //puts vectors together 
 
+            //trying to find a reliable way to dynamically find speed
             if (moveDirection == new Vector3(0.0f, 0.0f, 0.0f))
             {
-                test = 0.0f;
+                exportSpeed = 0.0f;
             }
 
 
             if (Input.GetButton("Jump") && canMove)
             {
                 moveDirection.y = jumpSpeed;    //makes player jump
-                thisAnim.SetTrigger("jump");
+                thisAnim.SetTrigger("jump");    //sets trigger jump for the jump animation
             }
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = 15;
                 if (moveDirection != new Vector3(0.0f, 0.0f, 0.0f))
                 {
-                    test = speed;
+                    exportSpeed = speed;
                 }
             }
             else
@@ -84,7 +90,7 @@ public class SC_TPSController : MonoBehaviour
                 speed = defaultSpeed;
                 if (moveDirection != new Vector3(0.0f, 0.0f, 0.0f))
                 {
-                    test = defaultSpeed;
+                    exportSpeed = defaultSpeed;
                 }
             }
             thisAnim.SetBool("grounded", true);
@@ -110,8 +116,17 @@ public class SC_TPSController : MonoBehaviour
             playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);  //applies rotation to transform
             transform.eulerAngles = new Vector2(0, rotation.y); //applies y rotation to transform
         }
-
-        thisAnim.SetFloat("speed", test);
+        //Set float spped for the animation
+        thisAnim.SetFloat("speed", exportSpeed);
+        bool activeDialogue = DialogueManager.GetComponent<DialogueManager>().GiveBool();
+        //Manage dialogue
+        if (activeDialogue)
+        {
+            if (/*Input.GetKeyDown(KeyCode.E) ||*/ Input.GetKeyDown(KeyCode.Return))
+            {
+                DialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
+            }
+        }
     }
     //Fixed Update is used for physics calculations
     void FixedUpdate()
@@ -122,14 +137,15 @@ public class SC_TPSController : MonoBehaviour
 
         Color color = Color.red;
 
-        Debug.DrawRay(currentPos, transform.forward*3, color, 0.0f);
+        Debug.DrawRay(currentPos, transform.forward * 3, color, 0.0f);
         if (Physics.Raycast(currentPos, transform.forward, out ray, 3.0f))
         {
             if (ray.collider.CompareTag("person"))
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log("test");
+                    NPCS[ray.collider.gameObject.name].GetComponent<Generic_NPC>().SendDialogueBool(true);
+                    NPCS[ray.collider.gameObject.name].GetComponent<Generic_NPC>().TriggerDialogue();
                 }
             }
         }
