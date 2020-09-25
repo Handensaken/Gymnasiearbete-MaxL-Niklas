@@ -160,6 +160,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &87790175 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9179194753691190405, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &87790176
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -190,11 +196,13 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
-    name: Elin
-    sentences: []
+    name: Eva
+    sentences:
+    - 
+  anim: {fileID: 87790175}
 --- !u!195 &87790178
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -656,6 +664,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &916104140 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8256056545817716599, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &916104141
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -686,11 +700,12 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
     name: Denise
     sentences: []
+  anim: {fileID: 916104140}
 --- !u!195 &916104143
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -716,6 +731,12 @@ NavMeshAgent:
 --- !u!1 &947068372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1621133610947791322, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &947068374 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1621133610938284632, guid: 0f2a5735966537e4a81bbb7108402140,
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
@@ -749,11 +770,15 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
     name: Karl
-    sentences: []
+    sentences:
+    - Hi, I'm Karl and I'm the local lord here.
+    - if you need gear go see the blacksmith, he works east of here.
+    - If you need a cold drink go to the tavern, it's in the south part of town.
+  anim: {fileID: 947068374}
 --- !u!195 &947068377
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -861,6 +886,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1309527301 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3335104227383347214, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &1309527302
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -913,14 +944,22 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 5
   wanderTimer: 10
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
     name: Kristina
-    sentences: []
+    sentences:
+    - Hello!
+  anim: {fileID: 1309527301}
 --- !u!1 &1407019575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4984689704964054073, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1407019577 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4984689704956637115, guid: 0f2a5735966537e4a81bbb7108402140,
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
@@ -954,11 +993,14 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
     name: Olov
-    sentences: []
+    sentences:
+    - Huh?
+    - What do you want!?
+  anim: {fileID: 1407019577}
 --- !u!195 &1407019580
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -984,6 +1026,12 @@ NavMeshAgent:
 --- !u!1 &1496132893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4314517531005343499, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1496132895 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4314517530998056073, guid: 0f2a5735966537e4a81bbb7108402140,
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
@@ -1017,11 +1065,14 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
     name: Kurt
-    sentences: []
+    sentences:
+    - Hi, I'm Kurt I'm the local innkeeper
+    - Let me know if you need something!
+  anim: {fileID: 1496132895}
 --- !u!195 &1496132898
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1047,6 +1098,12 @@ NavMeshAgent:
 --- !u!1 &1589212972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4419687646333722870, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1589212974 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4419687646326297398, guid: 0f2a5735966537e4a81bbb7108402140,
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
@@ -1080,11 +1137,14 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
-    name: Erik
-    sentences: []
+    name: Bert
+    sentences:
+    - My dad's the best! He's the blacksmith.
+    - I can't wait until I'm 14 so I can join him as an apprentice.
+  anim: {fileID: 1589212974}
 --- !u!195 &1589212977
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1339,6 +1399,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1712656461 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6079302417352554896, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &1712656462
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1369,13 +1435,14 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 15
   wanderTimer: 10
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
     name: Linda
     sentences:
-    - Hello I'm Linda I tend the well. You're the innkeeper, right?
+    - 'Hello I''m Linda I tend the well. '
     - i like cookies!
+  anim: {fileID: 1712656461}
 --- !u!195 &1712656464
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1401,6 +1468,12 @@ NavMeshAgent:
 --- !u!1 &1841440840 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7330670313298190142, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1841440842 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7330670313290771644, guid: 0f2a5735966537e4a81bbb7108402140,
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
@@ -1434,11 +1507,15 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
     name: Hans
-    sentences: []
+    sentences:
+    - I'm the blacksmith! If ya ever need anything made you know who to talk to!
+    - Oh and also can you please tell my wife I'll be home late today. I'm working
+      on a new pickaze for Olov. She lives near the tavern.
+  anim: {fileID: 1841440842}
 --- !u!195 &1841440845
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1662,6 +1739,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1621133610938284632, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 1621133610947791322, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1672,6 +1754,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: person
       objectReference: {fileID: 0}
+    - target: {fileID: 2823846304017859834, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 2823846304027359044, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1682,6 +1769,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: person
       objectReference: {fileID: 0}
+    - target: {fileID: 3335104227383347214, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 3335104227390782346, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1697,6 +1789,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: person
       objectReference: {fileID: 0}
+    - target: {fileID: 4314517530998056073, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 4314517531005343499, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1707,6 +1804,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: person
       objectReference: {fileID: 0}
+    - target: {fileID: 4419687646326297398, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 4419687646333722870, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1717,6 +1819,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: person
       objectReference: {fileID: 0}
+    - target: {fileID: 4984689704956637115, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 4984689704964054073, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1727,6 +1834,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: person
       objectReference: {fileID: 0}
+    - target: {fileID: 6079302417352554896, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 6079302417359931922, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1802,6 +1914,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7330670313290771644, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 7330670313298190142, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1822,6 +1939,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2399.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8256056545817716599, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     - target: {fileID: 8256056545827198153, guid: 0f2a5735966537e4a81bbb7108402140,
         type: 3}
       propertyPath: m_Name
@@ -1847,6 +1969,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: person
       objectReference: {fileID: 0}
+    - target: {fileID: 9179194753691190405, guid: 0f2a5735966537e4a81bbb7108402140,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f2a5735966537e4a81bbb7108402140, type: 3}
 --- !u!1 &1956800544 stripped
@@ -1886,10 +2013,6 @@ MonoBehaviour:
   playerCameraParent: {fileID: 2107106661}
   lookSpeed: 6
   lookXLimit: 60
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
-  groundDistance: 0.3
   thisAnim: {fileID: 1956800546}
   NPCGameObjects:
   - {fileID: 1712656459}
@@ -1903,7 +2026,6 @@ MonoBehaviour:
   - {fileID: 947068372}
   - {fileID: 1841440840}
   DialogueManager: {fileID: 430992107}
-  canMove: 1
 --- !u!143 &1956800548
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1952,7 +2074,7 @@ PrefabInstance:
     - target: {fileID: 4875636188147119706, guid: 43edc8596a56db542a8575316a9dcdcd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.9
       objectReference: {fileID: 0}
     - target: {fileID: 4875636188147119706, guid: 43edc8596a56db542a8575316a9dcdcd,
         type: 3}
@@ -2007,6 +2129,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1936501065}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2040926463 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2823846304017859834, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!136 &2040926464
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2037,11 +2165,14 @@ MonoBehaviour:
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
-  speed: 0
   newPosition: {x: 0, y: 0, z: 0}
+  speed: 0
   dialogue:
     name: Alice
-    sentences: []
+    sentences:
+    - 'I''m Alice and this is my son Bert. '
+    - My husband is the blacksmith, he works in the other side of town.
+  anim: {fileID: 2040926463}
 --- !u!195 &2040926466
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -28,10 +28,13 @@ public class Generic_NPC : MonoBehaviour
     public float speed;
     //creates Dialogue
     public Dialogue dialogue;
+    //creates Animator to allow script to communicate with animator
+    public Animator anim;
 
     // Start is called before the first frame update
     void OnEnable()
     {
+        wanderTimer = Random.Range(5, 40);
         //gets NavMeshAgent
         agent = GetComponent<NavMeshAgent>();
         //sets timer to be equal to wander timer so NPC moves immediatley (not necessary)
@@ -54,12 +57,18 @@ public class Generic_NPC : MonoBehaviour
                 newPosition = RandomNavSphere(transform.position, wanderRadius, -1);
                 agent.SetDestination(newPosition);
                 timer = 0;
+                wanderTimer = Random.Range(5, 40);
             }
             if (transform.position != newPosition)
             //checks if the NPC has arrived at it's new position and if not sets speed to the agent's speed to later be used in an Animator
             {
                 speed = agent.speed;
             }
+            else
+            {
+                speed = 0;
+            }
+            anim.SetFloat("speed", speed);
         }
         else
         {

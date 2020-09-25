@@ -55,7 +55,7 @@ public class DialogueManager : MonoBehaviour
         //sets the dialogue text's text to be sentence
         dialogueText.text = sentence;
     }
-    void EndDialogue()
+    public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
         animator.SetBool("isActive", false);

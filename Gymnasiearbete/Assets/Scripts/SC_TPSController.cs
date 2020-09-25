@@ -37,6 +37,10 @@ public class SC_TPSController : MonoBehaviour
     //creates GameObject to use DialogueManager
     public GameObject DialogueManager;
 
+    //creates bool to read if ray exists
+    bool rayExists = false;
+    //creates RaycastHit object to store ray data
+    RaycastHit rayData;
     //creates RayHit GameObject 
     GameObject RayHit;
     //creates bool for checking wether an object is valid or not
@@ -72,7 +76,7 @@ public class SC_TPSController : MonoBehaviour
     void Update()
     {
         //prepares variable to send speed to animator
-        float exportSpeed = 0;  
+        float exportSpeed = 0;
 
         if (characterController.isGrounded)
         // if the player is grounded, recalculate move direction based on axes
@@ -82,14 +86,7 @@ public class SC_TPSController : MonoBehaviour
             float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;      //Sets current speed of X to input * speed if the character can move
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;    //-11- but for Y axis
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);      //puts vectors together 
-
-            if (moveDirection == new Vector3(0.0f, 0.0f, 0.0f))
-            //trying to find a reliable way to dynamically send speed to animator
-            {
-                exportSpeed = 0.0f;
-            }
-
-
+            
             if (Input.GetButton("Jump") && canMove)
             //makes player jump and sends jump trigger to animator
             {
@@ -100,20 +97,25 @@ public class SC_TPSController : MonoBehaviour
             //checks so the player is moving and if so increases speed and exportSpeed
             {
                 speed = 15;
-                if (moveDirection != new Vector3(0.0f, 0.0f, 0.0f))
-                {
-                    exportSpeed = speed;
-                }
             }
             else
             //otherwise set speed to base speed and as long as the player is moving base speed is exported
             {
                 speed = defaultSpeed;
-                if (moveDirection != new Vector3(0.0f, 0.0f, 0.0f))
-                {
-                    exportSpeed = defaultSpeed;
-                }
             }
+            if (moveDirection != new Vector3(0.0f, 0.0f, 0.0f))
+            {
+                exportSpeed = speed;
+            }
+
+            if (moveDirection == new Vector3(0.0f, 0.0f, 0.0f))
+            //trying to find a reliable way to dynamically send speed to animator
+            {
+                exportSpeed = 0.0f;
+            }
+            //exports speed to animator
+            thisAnim.SetFloat("speed", exportSpeed);
+
             //lets the jump animation play or initiates land animation
             thisAnim.SetBool("grounded", true);
 
@@ -139,8 +141,7 @@ public class SC_TPSController : MonoBehaviour
             playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);  //applies rotation to transform
             transform.eulerAngles = new Vector2(0, rotation.y); //applies y rotation to transform
         }
-        //exports speed to animator
-        thisAnim.SetFloat("speed", exportSpeed);
+
 
         //Gets bool to check if a dialogue is active if it is, lets player continue the dialogue;
         bool activeDialogue = DialogueManager.GetComponent<DialogueManager>().SendBool();
@@ -157,11 +158,14 @@ public class SC_TPSController : MonoBehaviour
             NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
             NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
         }
-        //prepared if statement to cancel dialogue if player moves to far from target
-        /*if(player is too far away from RayHit) 
+        if (rayExists && activeDialogue)
+        //if statement that cancels dialogue if the player moves to far from source
         {
-            
-        }*/
+            if ((transform.position - NPCS[RayHit.name].transform.position).sqrMagnitude > 10 * 10)
+            {
+                DialogueManager.GetComponent<DialogueManager>().EndDialogue();
+            }
+        }
     }
     //Fixed Update is used for physics calculations
     void FixedUpdate()
@@ -182,7 +186,9 @@ public class SC_TPSController : MonoBehaviour
             if (ray.collider.CompareTag("person"))
             {
                 RayHit = ray.collider.gameObject;
+                rayData = ray;
                 validObject = true;
+                rayExists = true;
             }
             else { validObject = false; }
         }
