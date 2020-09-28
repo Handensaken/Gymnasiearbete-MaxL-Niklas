@@ -10,6 +10,8 @@ public class Generic_NPC : MonoBehaviour
     //creates activeDialogue bool and sets it to false
     bool activeDialogue = false;
 
+    public bool hasQuest;
+
     //creates Transform to reference the player
     public Transform Player;
 
@@ -73,7 +75,7 @@ public class Generic_NPC : MonoBehaviour
         else
         {
             // !!NOT WORKING!! transform.LookAt(Player);
-            activeDialogue = DialogueManager.GetComponent<DialogueManager>().SendBool();
+            activeDialogue = DialogueManager.GetComponent<DialogueManager>().SendDialogueActive();
         }
     }
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
@@ -92,12 +94,11 @@ public class Generic_NPC : MonoBehaviour
         return navHit.position;
     }
 
-
     public void TriggerDialogue()
     //method to find DialogueManager object and initiate it's method StartDialogue with the inspector assigned dialogue as paramater
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-
+        FindObjectOfType<DialogueManager>().test(hasQuest);
         //research singleton pattern
     }
     public string GiveName()

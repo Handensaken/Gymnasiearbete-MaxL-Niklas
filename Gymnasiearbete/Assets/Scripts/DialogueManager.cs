@@ -9,6 +9,12 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     //creates Text variable for containing the dialogue
     public Text dialogueText;
+    //creates string variable used for storing dialogue
+    string sentence;
+    //Button array containing choices.
+    public Button[] choiceButtons;
+    //Gameobject containing buttons
+    public GameObject buttonParent;
 
     //creates Animator
     public Animator animator;
@@ -47,22 +53,46 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 0)
         //checks if we have more sentences, if not we end dialogue
         {
-            EndDialogue();
-            return;
+            if (!hasQuest)
+            //checks if the npc in question has a quest
+            {
+                EndDialogue();
+                return;
+            }
+            else
+            {
+                TriggerChoices();
+                return;
+            }
         }
         //removes the first index of sentences and returns it into the string sentence
-        string sentence = sentences.Dequeue();
+        sentence = sentences.Dequeue();
         //sets the dialogue text's text to be sentence
         dialogueText.text = sentence;
+    }
+    public void TriggerChoices()
+    {
+        buttonParent.SetActive(true);
     }
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
         animator.SetBool("isActive", false);
+        buttonParent.SetActive(false);
     }
-    public bool SendBool()
+    public bool SendDialogueActive()
     //sends a bool based on if a dialogue is active or not
     {
         return animator.GetBool("isActive");
+    }
+
+    bool hasQuest;
+    public void test(bool receivedParamater)
+    {
+        hasQuest = receivedParamater;
+    }
+    public void InitiateQuest()
+    {
+        Debug.Log("NPC has quest");
     }
 }

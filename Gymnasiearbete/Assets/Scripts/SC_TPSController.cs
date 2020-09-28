@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using System.ComponentModel;
 
 [RequireComponent(typeof(CharacterController))]
 public class SC_TPSController : MonoBehaviour
@@ -144,7 +145,7 @@ public class SC_TPSController : MonoBehaviour
 
 
         //Gets bool to check if a dialogue is active if it is, lets player continue the dialogue;
-        bool activeDialogue = DialogueManager.GetComponent<DialogueManager>().SendBool();
+        bool activeDialogue = DialogueManager.GetComponent<DialogueManager>().SendDialogueActive();
         if (activeDialogue)
         {
             if (/*Input.GetKeyDown(KeyCode.E) ||*/ Input.GetKeyDown(KeyCode.Return))
