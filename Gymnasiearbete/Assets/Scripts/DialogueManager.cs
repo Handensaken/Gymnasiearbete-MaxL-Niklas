@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     public Button[] choiceButtons;
     //Gameobject containing buttons
     public GameObject buttonParent;
+    //Gameobject containing quest box
+    public GameObject questBox;
 
     //creates Animator
     public Animator animator;
@@ -93,6 +95,10 @@ public class DialogueManager : MonoBehaviour
     }
     public void InitiateQuest()
     {
-        Debug.Log("NPC has quest");
+        questBox.SetActive(true);
+    }
+    public void EndQuest()
+    {
+        questBox.SetActive(false);
     }
 }
