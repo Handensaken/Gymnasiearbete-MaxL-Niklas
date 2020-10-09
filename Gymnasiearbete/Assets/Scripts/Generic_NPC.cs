@@ -7,6 +7,10 @@ public class Generic_NPC : MonoBehaviour
 {
     //creates GameObject DialogueManager
     public GameObject DialogueManager;
+
+
+    public GameObject questTracker;
+
     //creates activeDialogue bool and sets it to false
     bool activeDialogue = false;
 
@@ -33,6 +37,15 @@ public class Generic_NPC : MonoBehaviour
     //creates Animator to allow script to communicate with animator
     public Animator anim;
 
+    public bool greeted;
+    bool addOnce = false;
+
+
+
+    private void Start()
+    {
+        greeted = false;
+    }
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -70,13 +83,24 @@ public class Generic_NPC : MonoBehaviour
             {
                 speed = 0;
             }
-            anim.SetFloat("speed", speed);
         }
         else
         {
             // !!NOT WORKING!! transform.LookAt(Player);
+            speed = 0;
             activeDialogue = DialogueManager.GetComponent<DialogueManager>().SendDialogueActive();
         }
+        if (greeted)
+        {
+            if (!addOnce)
+            {
+                Debug.Log("added");
+                questTracker.GetComponent<QuestTracker>().greetQuest.Add(true);
+                addOnce = true;
+            }
+            greeted = true;
+        }
+        anim.SetFloat("speed", speed);
     }
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     //new method for finding new position
@@ -98,7 +122,7 @@ public class Generic_NPC : MonoBehaviour
     //method to find DialogueManager object and initiate it's method StartDialogue with the inspector assigned dialogue as paramater
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        FindObjectOfType<DialogueManager>().test(hasQuest);
+        FindObjectOfType<DialogueManager>().checkQuest(hasQuest);
         //research singleton pattern
     }
     public string GiveName()

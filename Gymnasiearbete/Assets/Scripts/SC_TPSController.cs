@@ -23,6 +23,8 @@ public class SC_TPSController : MonoBehaviour
     //creates rotation vector and sets it to 0
     Vector2 rotation = Vector2.zero;
 
+    public GameObject Tracker;
+
     //creates Transform to refernce parent object
     public Transform playerCameraParent;
     //creates float deciding how fast you look around you
@@ -43,15 +45,15 @@ public class SC_TPSController : MonoBehaviour
     //creates RaycastHit object to store ray data
     RaycastHit rayData;
     //creates RayHit GameObject 
-    GameObject RayHit;
+    public GameObject RayHit;
     //creates bool for checking wether an object is valid or not
     bool validObject = false;
 
     //creates empty dictionary of type <string, GameObject>
-    Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
 
     //bool to define if player can move
-    private bool canMove = true;
+    public bool canMove = true;
     //Start is called before the first frame update
     void Start()
     {
@@ -154,8 +156,9 @@ public class SC_TPSController : MonoBehaviour
             }
         }
         //lets the player interact with a valid GameObject
-        if (Input.GetKeyDown(KeyCode.E) && validObject)
+        if (Input.GetKeyDown(KeyCode.E) && validObject&&!activeDialogue && Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7)        //!!CAN ACTIVATE FROM DISTANCE!! FIX
         {
+            NPCS[RayHit.name].GetComponent<Generic_NPC>().greeted = true;
             NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
             NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
         }

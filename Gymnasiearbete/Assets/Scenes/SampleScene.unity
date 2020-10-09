@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 0
@@ -171,8 +172,11 @@ MonoBehaviour:
   dialogue:
     name: Eva
     sentences:
-    - 
+    - greetings
+    questName: 
+    questInfo: 
   anim: {fileID: 87790175}
+  greeted: 0
 --- !u!195 &87790178
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -201,12 +205,87 @@ Light:
     type: 3}
   m_PrefabInstance: {fileID: 7161015876623034076}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &247365762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247365764}
+  - component: {fileID: 247365763}
+  m_Layer: 0
+  m_Name: QuestTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &247365763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247365762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e481cd76b626e48a7608b18d62bf29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1956800544}
+  DialogueManager: {fileID: 430992108}
+  questName: {fileID: 1954112687}
+  questInfo: {fileID: 1681150908}
+  questBox: {fileID: 1291266338}
+  greetQuest: 
+--- !u!4 &247365764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247365762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1166.8, y: 136.86, z: 2018.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &318625129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8537799057871931040, guid: 894554471919f754dbce0e7714ba6fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8537799058186752969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &318625133 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8537799057871931044, guid: 894554471919f754dbce0e7714ba6fa0,
     type: 3}
   m_PrefabInstance: {fileID: 8537799058186752969}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &318625134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318625129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &421086818 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8537799057802499499, guid: 894554471919f754dbce0e7714ba6fa0,
@@ -237,6 +316,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd82cbc7a7b68b24c81a8c1a29d879e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &534669904 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5540640903399371403, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5540640903560960219}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &733234225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8537799058563438584, guid: 894554471919f754dbce0e7714ba6fa0,
@@ -294,6 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 0
@@ -302,8 +388,12 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Denise
-    sentences: []
+    sentences:
+    - Hi
+    questName: 
+    questInfo: 
   anim: {fileID: 916104140}
+  greeted: 0
 --- !u!195 &916104143
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -365,6 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 0
@@ -377,7 +468,10 @@ MonoBehaviour:
     - Hi, I'm Karl and I'm the local lord here.
     - if you need gear go see the blacksmith, he works east of here.
     - If you need a cold drink go to the tavern, it's in the south part of town.
+    questName: 
+    questInfo: 
   anim: {fileID: 947068374}
+  greeted: 0
 --- !u!195 &947068377
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -430,6 +524,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1291266338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8537799059179961067, guid: 894554471919f754dbce0e7714ba6fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8537799058186752969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1309527299 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3335104227390782384, guid: 0f2a5735966537e4a81bbb7108402140,
@@ -491,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 5
@@ -501,7 +602,10 @@ MonoBehaviour:
     name: Kristina
     sentences:
     - Hello!
+    questName: 
+    questInfo: 
   anim: {fileID: 1309527301}
+  greeted: 0
 --- !u!1 &1407019575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4984689704964054073, guid: 0f2a5735966537e4a81bbb7108402140,
@@ -541,6 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 0
@@ -552,7 +657,10 @@ MonoBehaviour:
     sentences:
     - Huh?
     - What do you want!?
+    questName: 
+    questInfo: 
   anim: {fileID: 1407019577}
+  greeted: 0
 --- !u!195 &1407019580
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -614,6 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 0
@@ -625,7 +734,10 @@ MonoBehaviour:
     sentences:
     - Hi, I'm Kurt I'm the local innkeeper
     - Let me know if you need something!
+    questName: 
+    questInfo: 
   anim: {fileID: 1496132895}
+  greeted: 0
 --- !u!195 &1496132898
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -687,6 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 0
@@ -698,7 +811,10 @@ MonoBehaviour:
     sentences:
     - My dad's the best! He's the blacksmith.
     - I can't wait until I'm 14 so I can join him as an apprentice.
+    questName: 
+    questInfo: 
   anim: {fileID: 1589212974}
+  greeted: 0
 --- !u!195 &1589212977
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -721,6 +837,38 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1591468398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8537799058880279207, guid: 894554471919f754dbce0e7714ba6fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8537799058186752969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1591468403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591468398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 100
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!850595691 &1601400821
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -782,6 +930,50 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+--- !u!1 &1681150906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8537799059863666803, guid: 894554471919f754dbce0e7714ba6fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8537799058186752969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1681150908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8537799059863666805, guid: 894554471919f754dbce0e7714ba6fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8537799058186752969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681150906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1681150910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681150906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1712656459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6079302417359931950, guid: 0f2a5735966537e4a81bbb7108402140,
@@ -804,10 +996,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.39144897
+  m_Height: 1.8348007
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0.003753662, y: 0.91740036, z: 0}
 --- !u!114 &1712656463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,6 +1013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 1
   Player: {fileID: 0}
   wanderRadius: 15
@@ -832,7 +1025,10 @@ MonoBehaviour:
     sentences:
     - 'Hello I''m Linda I tend the well. '
     - i like cookies!
+    questName: Greetings in order
+    questInfo: Greet everyone in town
   anim: {fileID: 1712656461}
+  greeted: 0
 --- !u!195 &1712656464
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -894,6 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 0
@@ -906,7 +1103,10 @@ MonoBehaviour:
     - I'm the blacksmith! If ya ever need anything made you know who to talk to!
     - Oh and also can you please tell my wife I'll be home late today. I'm working
       on a new pickaxe for Olov. We live near the tavern.
+    questName: 
+    questInfo: 
   anim: {fileID: 1841440842}
+  greeted: 0
 --- !u!195 &1841440845
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1367,6 +1567,24 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f2a5735966537e4a81bbb7108402140, type: 3}
+--- !u!114 &1954112687 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8537799059591378790, guid: 894554471919f754dbce0e7714ba6fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8537799058186752969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1956800544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1102804442991399041, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5540640903560960219}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2040926461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2823846304027359044, guid: 0f2a5735966537e4a81bbb7108402140,
@@ -1406,6 +1624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
+  questTracker: {fileID: 247365762}
   hasQuest: 0
   Player: {fileID: 0}
   wanderRadius: 0
@@ -1417,7 +1636,10 @@ MonoBehaviour:
     sentences:
     - 'I''m Alice and this is my son Bert. '
     - My husband is the blacksmith, he works in the other side of town.
+    questName: 
+    questInfo: 
   anim: {fileID: 2040926463}
+  greeted: 0
 --- !u!195 &2040926466
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1477,6 +1699,31 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 318625133}
+    - target: {fileID: 946453707531527730, guid: 79fc05b16550baa4292a179b1103c411,
+        type: 3}
+      propertyPath: questBox
+      value: 
+      objectReference: {fileID: 1291266338}
+    - target: {fileID: 946453707531527730, guid: 79fc05b16550baa4292a179b1103c411,
+        type: 3}
+      propertyPath: questName
+      value: 
+      objectReference: {fileID: 1954112687}
+    - target: {fileID: 946453707531527730, guid: 79fc05b16550baa4292a179b1103c411,
+        type: 3}
+      propertyPath: questText
+      value: 
+      objectReference: {fileID: 1681150908}
+    - target: {fileID: 946453707531527730, guid: 79fc05b16550baa4292a179b1103c411,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1956800544}
+    - target: {fileID: 946453707531527730, guid: 79fc05b16550baa4292a179b1103c411,
+        type: 3}
+      propertyPath: questInfo
+      value: 
+      objectReference: {fileID: 1681150908}
     - target: {fileID: 946453707531527731, guid: 79fc05b16550baa4292a179b1103c411,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1546,6 +1793,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1102804442991399041, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
+        type: 3}
+      propertyPath: m_Name
+      value: player
+      objectReference: {fileID: 0}
     - target: {fileID: 5540640902682407160, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
         type: 3}
       propertyPath: NPCGameObjects.Array.data[0]
@@ -1813,15 +2065,75 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -594
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 182
+      objectReference: {fileID: 0}
     - target: {fileID: 8537799058563438586, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 430992108}
+      objectReference: {fileID: 247365763}
+    - target: {fileID: 8537799058563438586, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InitiateQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799058563438586, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: QuestTracker, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8537799058880279207, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799058880279224, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799058880279224, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 534669904}
+    - target: {fileID: 8537799058880279225, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799058880279225, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8537799058880279227, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
@@ -1933,5 +2245,80 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 430992108}
+    - target: {fileID: 8537799059122024609, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059179961066, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059179961066, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059179961066, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059179961066, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059179961066, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059179961066, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059179961067, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059591378788, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059591378791, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.50166
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059591378791, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 28.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059591378791, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 98.99667
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059591378791, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 43.32733
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059863666802, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.662
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537799059863666802, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 56.67633
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 894554471919f754dbce0e7714ba6fa0, type: 3}

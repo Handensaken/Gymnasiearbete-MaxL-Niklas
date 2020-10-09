@@ -13,4 +13,8 @@ public class Dialogue
     //creates a string array containing what the object may say when interacted with
     public string[] sentences;
 
+    //creates string array containing quest info
+
+    public string questName;
+    public string questInfo;
 }

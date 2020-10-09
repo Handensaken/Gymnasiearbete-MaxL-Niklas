@@ -16,7 +16,11 @@ public class DialogueManager : MonoBehaviour
     //Gameobject containing buttons
     public GameObject buttonParent;
     //Gameobject containing quest box
-    public GameObject questBox;
+
+    bool hasQuest;
+
+
+    public GameObject player;
 
     //creates Animator
     public Animator animator;
@@ -50,6 +54,10 @@ public class DialogueManager : MonoBehaviour
         //displays the first sentence
         DisplayNextSentence();
     }
+    public void QuestDialogue()
+    {
+
+    }
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -75,12 +83,14 @@ public class DialogueManager : MonoBehaviour
     public void TriggerChoices()
     {
         buttonParent.SetActive(true);
+        player.gameObject.GetComponent<SC_TPSController>().canMove = false;
     }
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
         animator.SetBool("isActive", false);
         buttonParent.SetActive(false);
+        player.gameObject.GetComponent<SC_TPSController>().canMove = true;
     }
     public bool SendDialogueActive()
     //sends a bool based on if a dialogue is active or not
@@ -88,17 +98,11 @@ public class DialogueManager : MonoBehaviour
         return animator.GetBool("isActive");
     }
 
-    bool hasQuest;
-    public void test(bool receivedParamater)
+    public void checkQuest(bool receivedParamater)
     {
         hasQuest = receivedParamater;
     }
-    public void InitiateQuest()
-    {
-        questBox.SetActive(true);
-    }
-    public void EndQuest()
-    {
-        questBox.SetActive(false);
-    }
+
+
+    
 }
