@@ -45,18 +45,23 @@ public class DialogueManager : MonoBehaviour
 
         //clears the queue sentences
         sentences.Clear();
-
-        foreach (string sentence in dialogue.sentences)
-        //Enqueues every sentence in dialogues sentences
+        if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
         {
-            sentences.Enqueue(sentence);
+            foreach (string sentence in dialogue.initialSentences)
+            //Enqueues every sentence in dialogues sentences
+            {
+                sentences.Enqueue(sentence);
+            }
+        }
+        else
+        {
+            foreach(string sentence in dialogue.genericSentences)
+            {
+                sentences.Enqueue(sentence);
+            }
         }
         //displays the first sentence
         DisplayNextSentence();
-    }
-    public void QuestDialogue()
-    {
-
     }
     public void DisplayNextSentence()
     {
@@ -88,6 +93,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
+        player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
         animator.SetBool("isActive", false);
         buttonParent.SetActive(false);
         player.gameObject.GetComponent<SC_TPSController>().canMove = true;
@@ -104,5 +110,5 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    
+
 }

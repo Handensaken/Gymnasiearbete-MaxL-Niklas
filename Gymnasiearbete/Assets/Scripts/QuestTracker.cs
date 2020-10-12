@@ -22,12 +22,13 @@ public class QuestTracker : MonoBehaviour
     public List<bool> greetQuest = new List<bool>();
     private void Update()
     {
-        
-        if (greetQuest.Count == Player.GetComponent<SC_TPSController>().NPCS.Count && !quests[questName.text])
+
+        if (greetQuest.Count == Player.GetComponent<SC_TPSController>().NPCS.Count)
         {
             questInfo.text = "Quest Complete!";
 
             Invoke("DoThing", 5.0f);
+            EndQuest();
         }
     }
 
@@ -38,9 +39,12 @@ public class QuestTracker : MonoBehaviour
 
     public void InitiateQuest()
     {
+
+        //!! ADD SO ONLY ONE QUEST CAN BE ACTIVE AT A TIME!! !!GAME BREAKING!! Or at least make the player able to toggle between viewing different quests
         questName.text = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().dialogue.questName;
         questInfo.text = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().dialogue.questInfo;
         quests.Add(questName.text, false);
+
         questBox.SetActive(true);
         DialogueManager.EndDialogue();
     }

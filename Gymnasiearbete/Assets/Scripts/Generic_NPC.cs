@@ -98,7 +98,7 @@ public class Generic_NPC : MonoBehaviour
                 questTracker.GetComponent<QuestTracker>().greetQuest.Add(true);
                 addOnce = true;
             }
-            greeted = true;
+            //greeted = true;
         }
         anim.SetFloat("speed", speed);
     }

@@ -155,10 +155,10 @@ public class SC_TPSController : MonoBehaviour
                 DialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
             }
         }
-        //lets the player interact with a valid GameObject
-        if (Input.GetKeyDown(KeyCode.E) && validObject&&!activeDialogue && Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7)        //!!CAN ACTIVATE FROM DISTANCE!! FIX
+        //lets the player interact with a valid GameObject in range
+        if (Input.GetKeyDown(KeyCode.E) && validObject&&!activeDialogue && Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7)        
         {
-            NPCS[RayHit.name].GetComponent<Generic_NPC>().greeted = true;
+           
             NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
             NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
         }

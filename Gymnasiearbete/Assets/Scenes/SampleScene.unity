@@ -171,8 +171,10 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Eva
-    sentences:
-    - greetings
+    initialSentences:
+    - Hiya! I'm Eva. buy me shit
+    genericSentences:
+    - 'OOGA BOOGA '
     questName: 
     questInfo: 
   anim: {fileID: 87790175}
@@ -388,8 +390,11 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Denise
-    sentences:
-    - Hi
+    initialSentences:
+    - 'Hi, I''m Denise '
+    genericSentences:
+    - The developer has deemed me unimportant
+    - So I have nothing interesting to say.
     questName: 
     questInfo: 
   anim: {fileID: 916104140}
@@ -464,10 +469,13 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Karl
-    sentences:
-    - Hi, I'm Karl and I'm the local lord here.
-    - if you need gear go see the blacksmith, he works east of here.
-    - If you need a cold drink go to the tavern, it's in the south part of town.
+    initialSentences:
+    - Greetings! I am Karl, the lord of this town.
+    - Hans, the blacksmith can handle all your blacksmithing needs.
+    - Kurt can get you a room for the night.
+    - The miner, Olov eeh you'd better stay away from him.
+    genericSentences:
+    - I hope you enjoy your stay here.
     questName: 
     questInfo: 
   anim: {fileID: 947068374}
@@ -600,8 +608,10 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Kristina
-    sentences:
-    - Hello!
+    initialSentences:
+    - Nice to meet you! I'm Kristina
+    genericSentences:
+    - cok and ball
     questName: 
     questInfo: 
   anim: {fileID: 1309527301}
@@ -654,9 +664,11 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Olov
-    sentences:
-    - Huh?
-    - What do you want!?
+    initialSentences:
+    - huh?
+    - 'What do you want? '
+    - Me? I'm Olov, now fuck off.
+    genericSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 1407019577}
@@ -731,9 +743,10 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Kurt
-    sentences:
-    - Hi, I'm Kurt I'm the local innkeeper
-    - Let me know if you need something!
+    initialSentences:
+    - I'm Kurt, I'm the innkeeper.
+    genericSentences:
+    - haha whore
     questName: 
     questInfo: 
   anim: {fileID: 1496132895}
@@ -808,9 +821,10 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Bert
-    sentences:
-    - My dad's the best! He's the blacksmith.
-    - I can't wait until I'm 14 so I can join him as an apprentice.
+    initialSentences:
+    - Who are you?
+    genericSentences:
+    - Yoo, It's that pedo
     questName: 
     questInfo: 
   anim: {fileID: 1589212974}
@@ -1022,9 +1036,11 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Linda
-    sentences:
-    - 'Hello I''m Linda I tend the well. '
-    - i like cookies!
+    initialSentences:
+    - Hello! I'm Linda I usually stay by the well
+    - You should go greet everyone in town.
+    genericSentences:
+    - Hello!
     questName: Greetings in order
     questInfo: Greet everyone in town
   anim: {fileID: 1712656461}
@@ -1091,7 +1107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueManager: {fileID: 430992107}
   questTracker: {fileID: 247365762}
-  hasQuest: 0
+  hasQuest: 1
   Player: {fileID: 0}
   wanderRadius: 0
   wanderTimer: 0
@@ -1099,12 +1115,15 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Hans
-    sentences:
-    - I'm the blacksmith! If ya ever need anything made you know who to talk to!
-    - Oh and also can you please tell my wife I'll be home late today. I'm working
-      on a new pickaxe for Olov. We live near the tavern.
-    questName: 
-    questInfo: 
+    initialSentences:
+    - I'm Hans  I'm the blacksmtih I deal with all things smithing and black.
+    - "Would you tell my wife I'll be late? I'm working on a pickaxe for \nOlov."
+    - We live in the south part of town
+    genericSentences:
+    - Do you need me to deal with any blacks?
+    questName: New Pickaxe
+    questInfo: Hans the blackmith is working on a new pickaxe for Olov. Tell his
+      wife he will be late
   anim: {fileID: 1841440842}
   greeted: 0
 --- !u!195 &1841440845
@@ -1633,9 +1652,10 @@ MonoBehaviour:
   speed: 0
   dialogue:
     name: Alice
-    sentences:
-    - 'I''m Alice and this is my son Bert. '
-    - My husband is the blacksmith, he works in the other side of town.
+    initialSentences:
+    - I'm Alice, the blacksmith is my husband.
+    genericSentences:
+    - I wish Bert would respect me more...
     questName: 
     questInfo: 
   anim: {fileID: 2040926463}
