@@ -52,6 +52,10 @@ public class SC_TPSController : MonoBehaviour
     //creates empty dictionary of type <string, GameObject>
     public Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
 
+    public GameObject QuestTracker;
+
+    public GameObject QuestGiver;
+
     //bool to define if player can move
     public bool canMove = true;
     //Start is called before the first frame update
@@ -89,7 +93,7 @@ public class SC_TPSController : MonoBehaviour
             float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;      //Sets current speed of X to input * speed if the character can move
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;    //-11- but for Y axis
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);      //puts vectors together 
-            
+
             if (Input.GetButton("Jump") && canMove)
             //makes player jump and sends jump trigger to animator
             {
@@ -156,11 +160,14 @@ public class SC_TPSController : MonoBehaviour
             }
         }
         //lets the player interact with a valid GameObject in range
-        if (Input.GetKeyDown(KeyCode.E) && validObject&&!activeDialogue && Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7)        
+        if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7)
         {
-           
             NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
             NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
+            if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().dialogue.questName) && RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().target)
+            {
+                QuestTracker.GetComponent<QuestTracker>().EndQuest();
+            }
         }
         if (rayExists && activeDialogue)
         //if statement that cancels dialogue if the player moves to far from source
@@ -170,6 +177,10 @@ public class SC_TPSController : MonoBehaviour
                 DialogueManager.GetComponent<DialogueManager>().EndDialogue();
             }
         }
+    }
+    void doThing()
+    {
+
     }
     //Fixed Update is used for physics calculations
     void FixedUpdate()

@@ -19,15 +19,18 @@ public class QuestTracker : MonoBehaviour
     public GameObject questBox;
 
 
+
     public List<bool> greetQuest = new List<bool>();
     private void Update()
+    {
+        GreetQuest();
+    }
+
+    void GreetQuest()
     {
 
         if (greetQuest.Count == Player.GetComponent<SC_TPSController>().NPCS.Count)
         {
-            questInfo.text = "Quest Complete!";
-
-            Invoke("DoThing", 5.0f);
             EndQuest();
         }
     }
@@ -44,13 +47,16 @@ public class QuestTracker : MonoBehaviour
         questName.text = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().dialogue.questName;
         questInfo.text = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().dialogue.questInfo;
         quests.Add(questName.text, false);
-
+        Player.GetComponent<SC_TPSController>().QuestGiver = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name];
         questBox.SetActive(true);
         DialogueManager.EndDialogue();
     }
     public void EndQuest()
     {
+        questInfo.text = "Quest Complete";
+        Invoke("DoThing", 5.0f);
         quests[questName.text] = true;
-        questBox.SetActive(false);
+      //  questBox.SetActive(false);
+        DialogueManager.GetComponent<DialogueManager>().activeQuest = false;
     }
 }

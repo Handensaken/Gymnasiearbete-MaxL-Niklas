@@ -40,7 +40,9 @@ public class Generic_NPC : MonoBehaviour
     public bool greeted;
     bool addOnce = false;
 
+    public bool targeted = false;
 
+    public string target;
 
     private void Start()
     {

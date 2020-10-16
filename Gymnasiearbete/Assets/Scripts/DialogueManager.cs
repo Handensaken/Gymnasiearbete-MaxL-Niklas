@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class DialogueManager : MonoBehaviour
 
     bool hasQuest;
 
+    //Sets up bool to keep track of whether a quest is active
+    public bool activeQuest = false;
 
     public GameObject player;
 
@@ -55,7 +58,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            foreach(string sentence in dialogue.genericSentences)
+            foreach (string sentence in dialogue.genericSentences)
             {
                 sentences.Enqueue(sentence);
             }
@@ -74,9 +77,15 @@ public class DialogueManager : MonoBehaviour
                 EndDialogue();
                 return;
             }
-            else
+            else if (!activeQuest)
             {
                 TriggerChoices();
+                return;
+            }
+            else
+            {
+                Debug.Log("Already has quest");
+                EndDialogue();
                 return;
             }
         }
@@ -89,6 +98,7 @@ public class DialogueManager : MonoBehaviour
     {
         buttonParent.SetActive(true);
         player.gameObject.GetComponent<SC_TPSController>().canMove = false;
+        activeQuest = true;
     }
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box

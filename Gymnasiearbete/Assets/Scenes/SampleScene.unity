@@ -179,6 +179,8 @@ MonoBehaviour:
     questInfo: 
   anim: {fileID: 87790175}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!195 &87790178
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -399,6 +401,8 @@ MonoBehaviour:
     questInfo: 
   anim: {fileID: 916104140}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!195 &916104143
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -480,6 +484,8 @@ MonoBehaviour:
     questInfo: 
   anim: {fileID: 947068374}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!195 &947068377
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -616,6 +622,8 @@ MonoBehaviour:
     questInfo: 
   anim: {fileID: 1309527301}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!1 &1407019575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4984689704964054073, guid: 0f2a5735966537e4a81bbb7108402140,
@@ -673,6 +681,8 @@ MonoBehaviour:
     questInfo: 
   anim: {fileID: 1407019577}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!195 &1407019580
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -751,6 +761,8 @@ MonoBehaviour:
     questInfo: 
   anim: {fileID: 1496132895}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!195 &1496132898
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -829,6 +841,8 @@ MonoBehaviour:
     questInfo: 
   anim: {fileID: 1589212974}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!195 &1589212977
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1045,6 +1059,8 @@ MonoBehaviour:
     questInfo: Greet everyone in town
   anim: {fileID: 1712656461}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!195 &1712656464
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1122,10 +1138,11 @@ MonoBehaviour:
     genericSentences:
     - Do you need me to deal with any blacks?
     questName: New Pickaxe
-    questInfo: Hans the blackmith is working on a new pickaxe for Olov. Tell his
-      wife he will be late
+    questInfo: Talk to Hans' wife in the south part of town
   anim: {fileID: 1841440842}
   greeted: 0
+  targeted: 0
+  target: Alice
 --- !u!195 &1841440845
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1660,6 +1677,8 @@ MonoBehaviour:
     questInfo: 
   anim: {fileID: 2040926463}
   greeted: 0
+  targeted: 0
+  target: 
 --- !u!195 &2040926466
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1873,20 +1892,30 @@ PrefabInstance:
       propertyPath: DialogueManager
       value: 
       objectReference: {fileID: 430992107}
+    - target: {fileID: 5540640902682407160, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
+        type: 3}
+      propertyPath: QuestTracker
+      value: 
+      objectReference: {fileID: 247365762}
+    - target: {fileID: 5540640902682407160, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
+        type: 3}
+      propertyPath: defaultSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5540640903548683686, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 526
+      value: 672
       objectReference: {fileID: 0}
     - target: {fileID: 5540640903548683686, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 142
+      value: 169
       objectReference: {fileID: 0}
     - target: {fileID: 5540640903548683686, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1948
+      value: 2315
       objectReference: {fileID: 0}
     - target: {fileID: 5540640903548683686, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
         type: 3}
