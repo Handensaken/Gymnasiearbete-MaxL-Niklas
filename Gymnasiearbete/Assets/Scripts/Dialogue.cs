@@ -11,6 +11,13 @@ public class Dialogue
     //makes string array input fields look a lot nicer
     [TextArea(3, 10)]
     //creates a string array containing what the object may say when interacted with
-    public string[] sentences;
+    public string[] initialSentences;
 
+
+    [TextArea(3, 10)]
+    public string[] genericSentences;
+
+    
+    public string questName;
+    public string questInfo;
 }

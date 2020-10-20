@@ -23,6 +23,8 @@ public class SC_TPSController : MonoBehaviour
     //creates rotation vector and sets it to 0
     Vector2 rotation = Vector2.zero;
 
+    public GameObject Tracker;
+
     //creates Transform to refernce parent object
     public Transform playerCameraParent;
     //creates float deciding how fast you look around you
@@ -43,15 +45,19 @@ public class SC_TPSController : MonoBehaviour
     //creates RaycastHit object to store ray data
     RaycastHit rayData;
     //creates RayHit GameObject 
-    GameObject RayHit;
+    public GameObject RayHit;
     //creates bool for checking wether an object is valid or not
     bool validObject = false;
 
     //creates empty dictionary of type <string, GameObject>
-    Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
+
+    public GameObject QuestTracker;
+
+    public GameObject QuestGiver;
 
     //bool to define if player can move
-    private bool canMove = true;
+    public bool canMove = true;
     //Start is called before the first frame update
     void Start()
     {
@@ -87,7 +93,7 @@ public class SC_TPSController : MonoBehaviour
             float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;      //Sets current speed of X to input * speed if the character can move
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;    //-11- but for Y axis
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);      //puts vectors together 
-            
+
             if (Input.GetButton("Jump") && canMove)
             //makes player jump and sends jump trigger to animator
             {
@@ -153,11 +159,15 @@ public class SC_TPSController : MonoBehaviour
                 DialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
             }
         }
-        //lets the player interact with a valid GameObject
-        if (Input.GetKeyDown(KeyCode.E) && validObject)
+        //lets the player interact with a valid GameObject in range
+        if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7)
         {
             NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
             NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
+            if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().dialogue.questName) && RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().target)
+            {
+                QuestTracker.GetComponent<QuestTracker>().EndQuest();
+            }
         }
         if (rayExists && activeDialogue)
         //if statement that cancels dialogue if the player moves to far from source
@@ -167,6 +177,10 @@ public class SC_TPSController : MonoBehaviour
                 DialogueManager.GetComponent<DialogueManager>().EndDialogue();
             }
         }
+    }
+    void doThing()
+    {
+
     }
     //Fixed Update is used for physics calculations
     void FixedUpdate()

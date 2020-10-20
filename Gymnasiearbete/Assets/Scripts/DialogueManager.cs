@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -16,7 +17,13 @@ public class DialogueManager : MonoBehaviour
     //Gameobject containing buttons
     public GameObject buttonParent;
     //Gameobject containing quest box
-    public GameObject questBox;
+
+    bool hasQuest;
+
+    //Sets up bool to keep track of whether a quest is active
+    public bool activeQuest = false;
+
+    public GameObject player;
 
     //creates Animator
     public Animator animator;
@@ -41,11 +48,20 @@ public class DialogueManager : MonoBehaviour
 
         //clears the queue sentences
         sentences.Clear();
-
-        foreach (string sentence in dialogue.sentences)
-        //Enqueues every sentence in dialogues sentences
+        if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
         {
-            sentences.Enqueue(sentence);
+            foreach (string sentence in dialogue.initialSentences)
+            //Enqueues every sentence in dialogues sentences
+            {
+                sentences.Enqueue(sentence);
+            }
+        }
+        else
+        {
+            foreach (string sentence in dialogue.genericSentences)
+            {
+                sentences.Enqueue(sentence);
+            }
         }
         //displays the first sentence
         DisplayNextSentence();
@@ -61,9 +77,15 @@ public class DialogueManager : MonoBehaviour
                 EndDialogue();
                 return;
             }
-            else
+            else if (!activeQuest)
             {
                 TriggerChoices();
+                return;
+            }
+            else
+            {
+                Debug.Log("Already has quest");
+                EndDialogue();
                 return;
             }
         }
@@ -75,12 +97,16 @@ public class DialogueManager : MonoBehaviour
     public void TriggerChoices()
     {
         buttonParent.SetActive(true);
+        player.gameObject.GetComponent<SC_TPSController>().canMove = false;
+        activeQuest = true;
     }
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
+        player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
         animator.SetBool("isActive", false);
         buttonParent.SetActive(false);
+        player.gameObject.GetComponent<SC_TPSController>().canMove = true;
     }
     public bool SendDialogueActive()
     //sends a bool based on if a dialogue is active or not
@@ -88,17 +114,11 @@ public class DialogueManager : MonoBehaviour
         return animator.GetBool("isActive");
     }
 
-    bool hasQuest;
-    public void test(bool receivedParamater)
+    public void checkQuest(bool receivedParamater)
     {
         hasQuest = receivedParamater;
     }
-    public void InitiateQuest()
-    {
-        questBox.SetActive(true);
-    }
-    public void EndQuest()
-    {
-        questBox.SetActive(false);
-    }
+
+
+
 }
