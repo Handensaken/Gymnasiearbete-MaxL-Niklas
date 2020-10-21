@@ -10,6 +10,7 @@ public class SC_TPSController : MonoBehaviour
 {
     //sets the default speed for the player
     public float defaultSpeed = 7.5f;
+    public float sprintSpeed = 15;
     //creates float to keep track of the current speed
     public float speed = 0.0f;
     //creates float deciding the speed of a jump
@@ -103,7 +104,7 @@ public class SC_TPSController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             //checks so the player is moving and if so increases speed and exportSpeed
             {
-                speed = 15;
+                speed = sprintSpeed;
             }
             else
             //otherwise set speed to base speed and as long as the player is moving base speed is exported
@@ -178,10 +179,10 @@ public class SC_TPSController : MonoBehaviour
             }
         }
     }
-    void doThing()
+    /*void doThing()
     {
 
-    }
+    }*/
     //Fixed Update is used for physics calculations
     void FixedUpdate()
     {
