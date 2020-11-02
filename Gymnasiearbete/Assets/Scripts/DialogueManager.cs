@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class DialogueManager : MonoBehaviour
 
     //creates a string queue containging sentences
     private Queue<string> sentences;
+
+    Dialogue dialogue;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +40,10 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
     //public bool isActive = false;
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue d)
     //method for setting dialogue to UI
     {
+        dialogue = d;
         //sets the animator bool "isActive" to true
         animator.SetBool("isActive", true);
 
@@ -48,23 +52,76 @@ public class DialogueManager : MonoBehaviour
 
         //clears the queue sentences
         sentences.Clear();
-        if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
+        if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted && !activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
         {
-            foreach (string sentence in dialogue.initialSentences)
-            //Enqueues every sentence in dialogues sentences
-            {
-                sentences.Enqueue(sentence);
-            }
+            InitialQuestSentences();
+
+
+            Debug.Log("greeted: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted);
+            Debug.Log("activeQuest: " + activeQuest);
+            Debug.Log("hasQuest: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest);
+
         }
+        else if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
+        {
+            InitialSentences();
+            Debug.Log("greeted: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted);
+            Debug.Log("activeQuest: " + activeQuest);
+            Debug.Log("hasQuest: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest);
+        }
+        else if (!activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+        {
+            QuestSentences();
+            Debug.Log("greeted: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted);
+            Debug.Log("activeQuest: " + activeQuest);
+            Debug.Log("hasQuest: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest);
+        }
+
         else
         {
-            foreach (string sentence in dialogue.genericSentences)
-            {
-                sentences.Enqueue(sentence);
-            }
+            GenericSentences();
+            Debug.Log("greeted: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted);
+            Debug.Log("activeQuest: " + activeQuest);
+            Debug.Log("hasQuest: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest);
         }
         //displays the first sentence
         DisplayNextSentence();
+    }
+
+    void GenericSentences()
+    {
+        foreach (string sentece in dialogue.genericSentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+    }
+    void InitialSentences()
+    {
+        foreach (string sentence in dialogue.initialSentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+    }
+    void QuestSentences()
+    {
+        foreach (string sentence in dialogue.questSentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+    }
+    void HasQuestSentences()
+    {
+        foreach (string sentence in dialogue.hasQuestSentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+    }
+    void InitialQuestSentences()
+    {
+        foreach (string sentence in dialogue.initialQuestSentences)
+        {
+            sentences.Enqueue(sentence);
+        }
     }
     public void DisplayNextSentence()
     {
@@ -84,9 +141,9 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Already has quest");
+                HasQuestSentences();
                 EndDialogue();
-                return;
+                // return;
             }
         }
         //removes the first index of sentences and returns it into the string sentence
@@ -98,7 +155,6 @@ public class DialogueManager : MonoBehaviour
     {
         buttonParent.SetActive(true);
         player.gameObject.GetComponent<SC_TPSController>().canMove = false;
-        activeQuest = true;
     }
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box

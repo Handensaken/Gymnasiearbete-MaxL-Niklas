@@ -76,7 +76,7 @@ public class SC_TPSController : MonoBehaviour
         //gets rotation based on angles for Y axis.
         rotation.y = transform.eulerAngles.y;
         //locks the cursor to the middle of the screen and hides it there
-        Cursor.lockState = CursorLockMode.Locked;
+   //     Cursor.lockState = CursorLockMode.Locked;
         //gets animator
         thisAnim.GetComponent<Animator>();
     }
@@ -194,9 +194,9 @@ public class SC_TPSController : MonoBehaviour
         //visible color to visualize ray
         Color color = Color.red;
         //vizualize ray (only in editor)
-        Debug.DrawRay(currentPos, transform.forward * 3, color, 0.0f);
+        Debug.DrawRay(currentPos, transform.forward * 5, color, 0.0f);
         //Cast ray from players position forward, put the data from hit object in ray, maximum distance is 3.0
-        if (Physics.Raycast(currentPos, transform.forward, out ray, 3.0f))
+        if (Physics.Raycast(currentPos, transform.forward, out ray, 5.0f))
         {
             //if ray hits a person let the GameObject RayHit get the gameObject value of the ray. Also sets validObject to true so it can be interacted with
             if (ray.collider.CompareTag("person"))

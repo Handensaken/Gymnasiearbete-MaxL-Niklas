@@ -8,6 +8,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class QuestTracker : MonoBehaviour
 {
+
     //public static List<string> quests = new List<string>();
     public Dictionary<string, bool> quests = new Dictionary<string, bool>();
     public GameObject Player;
@@ -23,14 +24,14 @@ public class QuestTracker : MonoBehaviour
     public List<bool> greetQuest = new List<bool>();
     private void Update()
     {
-        GreetQuest();
     }
 
-    void GreetQuest()
+    public void GreetQuest()
     {
 
         if (greetQuest.Count == Player.GetComponent<SC_TPSController>().NPCS.Count)
         {
+            Player.GetComponent<SC_TPSController>().NPCS["Hans"].GetComponent<Generic_NPC>().hasQuest = true;
             EndQuest();
         }
     }
@@ -50,13 +51,14 @@ public class QuestTracker : MonoBehaviour
         Player.GetComponent<SC_TPSController>().QuestGiver = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name];
         questBox.SetActive(true);
         DialogueManager.EndDialogue();
+        DialogueManager.GetComponent<DialogueManager>().activeQuest = true;
     }
     public void EndQuest()
     {
         questInfo.text = "Quest Complete";
         Invoke("DoThing", 5.0f);
         quests[questName.text] = true;
-      //  questBox.SetActive(false);
+        //  questBox.SetActive(false);
         DialogueManager.GetComponent<DialogueManager>().activeQuest = false;
     }
 }

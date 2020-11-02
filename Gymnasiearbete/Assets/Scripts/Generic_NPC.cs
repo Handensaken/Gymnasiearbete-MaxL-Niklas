@@ -98,6 +98,7 @@ public class Generic_NPC : MonoBehaviour
             {
                 Debug.Log("added");
                 questTracker.GetComponent<QuestTracker>().greetQuest.Add(true);
+                questTracker.GetComponent<QuestTracker>().GreetQuest();
                 addOnce = true;
             }
             //greeted = true;

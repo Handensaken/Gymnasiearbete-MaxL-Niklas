@@ -401,6 +401,9 @@ MonoBehaviour:
     - Hiya! I'm Eva. buy me shit
     genericSentences:
     - 'OOGA BOOGA '
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 87790175}
@@ -435,6 +438,85 @@ Light:
     type: 3}
   m_PrefabInstance: {fileID: 7161015876623034076}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &172562279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172562280}
+  - component: {fileID: 172562282}
+  - component: {fileID: 172562281}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &172562280
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172562279}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1556398317}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &172562281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172562279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!222 &172562282
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172562279}
+  m_CullTransparentMesh: 0
 --- !u!1001 &187772606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2711,6 +2793,9 @@ MonoBehaviour:
     genericSentences:
     - The developer has deemed me unimportant
     - So I have nothing interesting to say.
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 916104140}
@@ -2944,6 +3029,9 @@ MonoBehaviour:
     - The miner, Olov eeh you'd better stay away from him.
     genericSentences:
     - I hope you enjoy your stay here.
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 947068374}
@@ -2972,6 +3060,42 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &967360080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 967360081}
+  m_Layer: 5
+  m_Name: Debugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &967360081
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967360080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1556398317}
+  m_Father: {fileID: 1591468399}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &992557383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3399,6 +3523,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: e501831ad59a85f4bb7629bf22c658c8, type: 3}
+--- !u!4 &1147506196 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6417993698591736851, guid: 0f2a5735966537e4a81bbb7108402140,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936501065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1184343573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3798,6 +3928,26 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8537799058186752969}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1291266342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291266338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 2
 --- !u!1 &1309527299 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3335104227390782384, guid: 0f2a5735966537e4a81bbb7108402140,
@@ -3872,6 +4022,9 @@ MonoBehaviour:
     - Nice to meet you! I'm Kristina
     genericSentences:
     - cok and ball
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 1309527301}
@@ -4081,6 +4234,9 @@ MonoBehaviour:
     - 'What do you want? '
     - Me? I'm Olov, now fuck off.
     genericSentences: []
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 1407019577}
@@ -4129,6 +4285,50 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: e501831ad59a85f4bb7629bf22c658c8, type: 3}
+--- !u!1 &1473501466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473501468}
+  - component: {fileID: 1473501467}
+  m_Layer: 0
+  m_Name: MainQuestController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1473501467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473501466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eda7c837eb53f649a30b21f103a6365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestTracker: {fileID: 247365763}
+--- !u!4 &1473501468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473501466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1496132893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4314517531005343499, guid: 0f2a5735966537e4a81bbb7108402140,
@@ -4181,6 +4381,9 @@ MonoBehaviour:
     - I'm Kurt, I'm the innkeeper.
     genericSentences:
     - haha whore
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 1496132895}
@@ -4284,6 +4487,138 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1548343314}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1556398316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1556398317}
+  - component: {fileID: 1556398320}
+  - component: {fileID: 1556398319}
+  - component: {fileID: 1556398318}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1556398317
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556398316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 172562280}
+  m_Father: {fileID: 967360081}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1556398318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556398316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0, g: 0.37496448, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 1, b: 0.0018956661, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1556398319}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1473501467}
+        m_TargetAssemblyTypeName: MainQuestController, Assembly-CSharp
+        m_MethodName: SetTrue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1556398319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556398316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1556398320
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556398316}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1571021596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4411,6 +4746,9 @@ MonoBehaviour:
     - Who are you?
     genericSentences:
     - Yoo, It's that pedo
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 1589212974}
@@ -4442,6 +4780,12 @@ NavMeshAgent:
 --- !u!1 &1591468398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8537799058880279207, guid: 894554471919f754dbce0e7714ba6fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8537799058186752969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1591468399 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8537799058880279227, guid: 894554471919f754dbce0e7714ba6fa0,
     type: 3}
   m_PrefabInstance: {fileID: 8537799058186752969}
   m_PrefabAsset: {fileID: 0}
@@ -4479,7 +4823,7 @@ LightingSettings:
   m_PrefabAsset: {fileID: 0}
   m_Name: Settings.lighting
   serializedVersion: 2
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
@@ -5024,6 +5368,9 @@ MonoBehaviour:
     - You should go greet everyone in town.
     genericSentences:
     - Hello!
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: Greetings in order
     questInfo: Greet everyone in town
   anim: {fileID: 1712656461}
@@ -5552,10 +5899,21 @@ MonoBehaviour:
     name: Hans
     initialSentences:
     - I'm Hans  I'm the blacksmtih I deal with all things smithing and black.
-    - "Would you tell my wife I'll be late? I'm working on a pickaxe for \nOlov."
-    - We live in the south part of town
     genericSentences:
     - Do you need me to deal with any blacks?
+    questSentences:
+    - Hey kid! Would ya do me a favour?
+    - "Would you tell my wife I'll be late? \nWe live in the south part of town."
+    hasQuestSentences:
+    - "Hoy kid looks like you already have a quest, \ncome back when it's done"
+    initialQuestSentences:
+    - Yo Kid, I'm Hans the blacksmith!
+    - 'This is sort of hard to ask for but would
+
+      you tell my wife I''ll be
+      late?
+
+      we live in the south part of town.'
     questName: New Pickaxe
     questInfo: Talk to Hans' wife in the south part of town
   anim: {fileID: 1841440842}
@@ -7202,6 +7560,9 @@ MonoBehaviour:
     - I'm Alice, the blacksmith is my husband.
     genericSentences:
     - I wish Bert would respect me more...
+    questSentences: []
+    hasQuestSentences: []
+    initialQuestSentences: []
     questName: 
     questInfo: 
   anim: {fileID: 2040926463}
@@ -7906,6 +8267,11 @@ PrefabInstance:
       propertyPath: sprintSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5540640902682407160, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
+        type: 3}
+      propertyPath: QuestGiver
+      value: 
+      objectReference: {fileID: 1841440840}
     - target: {fileID: 5540640903548683686, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7968,6 +8334,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5, type: 3}
+--- !u!1001 &6595163750670194509
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1147506196}
+    m_Modifications:
+    - target: {fileID: 6595163751075047353, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8939ab8b7306c8a43952ac2855feaf57, type: 2}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1850.1023
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 148.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1906.1064
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.8073342
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5900945
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -107.673
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082265041, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.name
+      value: Jonas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: hasQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082431985, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_Name
+      value: Jonas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd3e8483df88ac3449599a7862723db0, type: 3}
 --- !u!1001 &7161015876623034076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8133,10 +8583,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8537799057802499501, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -594
+      value: -590
       objectReference: {fileID: 0}
     - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
@@ -8161,7 +8616,7 @@ PrefabInstance:
     - target: {fileID: 8537799057871931043, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 182
+      value: 171
       objectReference: {fileID: 0}
     - target: {fileID: 8537799058563438586, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
@@ -8313,6 +8768,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 430992108}
+    - target: {fileID: 8537799059104415663, guid: 894554471919f754dbce0e7714ba6fa0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
+      objectReference: {fileID: 0}
     - target: {fileID: 8537799059122024609, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
       propertyPath: m_IsActive
@@ -8346,7 +8806,7 @@ PrefabInstance:
     - target: {fileID: 8537799059179961066, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: -332.5
       objectReference: {fileID: 0}
     - target: {fileID: 8537799059179961067, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}

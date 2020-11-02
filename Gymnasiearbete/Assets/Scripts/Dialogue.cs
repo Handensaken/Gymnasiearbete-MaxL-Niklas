@@ -17,7 +17,16 @@ public class Dialogue
     [TextArea(3, 10)]
     public string[] genericSentences;
 
-    
+
+    [TextArea(3, 10)]
+    public string[] questSentences;
+
+    [TextArea(3, 10)]
+    public string[] hasQuestSentences;
+
+    [TextArea(3, 10)]
+    public string[] initialQuestSentences;
+
     public string questName;
     public string questInfo;
 }
