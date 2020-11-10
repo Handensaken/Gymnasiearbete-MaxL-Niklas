@@ -76,7 +76,7 @@ public class SC_TPSController : MonoBehaviour
         //gets rotation based on angles for Y axis.
         rotation.y = transform.eulerAngles.y;
         //locks the cursor to the middle of the screen and hides it there
-   //     Cursor.lockState = CursorLockMode.Locked;
+        //     Cursor.lockState = CursorLockMode.Locked;
         //gets animator
         thisAnim.GetComponent<Animator>();
     }
@@ -163,12 +163,30 @@ public class SC_TPSController : MonoBehaviour
         //lets the player interact with a valid GameObject in range
         if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7)
         {
-            NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
-            NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
-            if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().dialogue.questName) && RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().target)
+            try
             {
-                QuestTracker.GetComponent<QuestTracker>().EndQuest();
+
+                NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
+                NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
+                if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().dialogue.questName) && RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().target)
+                {
+                    QuestTracker.GetComponent<QuestTracker>().EndQuest();
+                }
             }
+            catch
+            {
+                NPCS[RayHit.name].GetComponent<JonasController>().RecieveDialogueBool(true);
+                NPCS[RayHit.name].GetComponent<JonasController>().TriggerDialogue();
+                if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().dialogue.questName) && RayHit.GetComponent<JonasController>().dialogue.name == NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().target)
+                {
+                    QuestTracker.GetComponent<QuestTracker>().EndQuest();
+                }
+            }
+            finally
+            {
+                Console.WriteLine("mate shits fucked you need to do something");
+            }
+
         }
         if (rayExists && activeDialogue)
         //if statement that cancels dialogue if the player moves to far from source

@@ -508,7 +508,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: start main
 --- !u!222 &172562282
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -667,6 +667,138 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 223714281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &238563044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238563045}
+  - component: {fileID: 238563048}
+  - component: {fileID: 238563047}
+  - component: {fileID: 238563046}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &238563045
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238563044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 907241960}
+  m_Father: {fileID: 967360081}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -42.8}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &238563046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238563044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 238563047}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1473501467}
+        m_TargetAssemblyTypeName: MainQuestController, Assembly-CSharp
+        m_MethodName: MainQuest1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &238563047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238563044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 1, b: 0.012454033, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &238563048
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238563044}
+  m_CullTransparentMesh: 0
 --- !u!1001 &239628572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2345,6 +2477,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 788826065}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &827346246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6595163751082431985, guid: cd3e8483df88ac3449599a7862723db0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6595163750670194509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &838178003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2740,6 +2878,85 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: e501831ad59a85f4bb7629bf22c658c8, type: 3}
+--- !u!1 &907241959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 907241960}
+  - component: {fileID: 907241962}
+  - component: {fileID: 907241961}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &907241960
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907241959}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 238563045}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &907241961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907241959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Button
+--- !u!222 &907241962
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907241959}
+  m_CullTransparentMesh: 0
 --- !u!1 &916104138 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8256056545827198153, guid: 0f2a5735966537e4a81bbb7108402140,
@@ -3088,6 +3305,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1556398317}
+  - {fileID: 238563045}
   m_Father: {fileID: 1591468399}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4314,7 +4532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eda7c837eb53f649a30b21f103a6365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestTracker: {fileID: 247365763}
+  evilPersonWEEEWOOO: {fileID: 827346246}
+  questTracker: {fileID: 0}
+  jonas: {fileID: 0}
 --- !u!4 &1473501468
 Transform:
   m_ObjectHideFlags: 0
@@ -5368,9 +5588,13 @@ MonoBehaviour:
     - You should go greet everyone in town.
     genericSentences:
     - Hello!
-    questSentences: []
-    hasQuestSentences: []
-    initialQuestSentences: []
+    questSentences:
+    - Have you said hello to everyone yet? No? You should!
+    hasQuestSentences:
+    - You already have a quest, come back when you're finished
+    initialQuestSentences:
+    - 'Hello! I''m Linda, the wellkeeper. '
+    - Well I like wells so I usually stay well withing reach of the well.
     questName: Greetings in order
     questInfo: Greet everyone in town
   anim: {fileID: 1712656461}
@@ -8403,6 +8627,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
+      propertyPath: dialogue.initialSentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.genericSentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.questSentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialQuestSentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.hasQuestSentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
       propertyPath: dialogue.name
       value: Jonas
       objectReference: {fileID: 0}
@@ -8411,13 +8660,74 @@ PrefabInstance:
       propertyPath: hasQuest
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.genericSentences.Array.data[0]
+      value: generic sentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialSentences.Array.data[0]
+      value: initial sentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.questSentences.Array.data[0]
+      value: quest sentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.hasQuestSentences.Array.data[0]
+      value: has quest sentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialQuestSentences.Array.data[0]
+      value: initial quest sentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: questTracker
+      value: 
+      objectReference: {fileID: 247365762}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: DialogueManager
+      value: 
+      objectReference: {fileID: 430992107}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 6595163750670194510}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.questName
+      value: main quest 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.questInfo
+      value: main quest info 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6595163751082431985, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: m_Name
       value: Jonas
       objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082431985, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd3e8483df88ac3449599a7862723db0, type: 3}
+--- !u!95 &6595163750670194510 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6595163751075047353, guid: cd3e8483df88ac3449599a7862723db0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6595163750670194509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7161015876623034076
 PrefabInstance:
   m_ObjectHideFlags: 0

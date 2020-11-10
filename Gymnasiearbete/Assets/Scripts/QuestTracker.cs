@@ -20,7 +20,6 @@ public class QuestTracker : MonoBehaviour
     public GameObject questBox;
 
 
-
     public List<bool> greetQuest = new List<bool>();
     private void Update()
     {

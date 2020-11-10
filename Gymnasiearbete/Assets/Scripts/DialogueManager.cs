@@ -52,37 +52,46 @@ public class DialogueManager : MonoBehaviour
 
         //clears the queue sentences
         sentences.Clear();
-        if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted && !activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+        try
         {
-            InitialQuestSentences();
 
+            if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted && !activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+            {
+                InitialQuestSentences();
+            }
+            else if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
+            {
+                InitialSentences();
+            }
+            else if (!activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+            {
+                QuestSentences();
+            }
 
-            Debug.Log("greeted: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted);
-            Debug.Log("activeQuest: " + activeQuest);
-            Debug.Log("hasQuest: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest);
-
+            else
+            {
+                GenericSentences();
+            }
         }
-        else if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
+        catch
         {
-            InitialSentences();
-            Debug.Log("greeted: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted);
-            Debug.Log("activeQuest: " + activeQuest);
-            Debug.Log("hasQuest: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest);
-        }
-        else if (!activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
-        {
-            QuestSentences();
-            Debug.Log("greeted: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted);
-            Debug.Log("activeQuest: " + activeQuest);
-            Debug.Log("hasQuest: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest);
-        }
+            if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted && !activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
+            {
+                InitialQuestSentences();
+            }
+            else if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted)
+            {
+                InitialSentences();
+            }
+            else if (!activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
+            {
+                QuestSentences();
+            }
 
-        else
-        {
-            GenericSentences();
-            Debug.Log("greeted: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted);
-            Debug.Log("activeQuest: " + activeQuest);
-            Debug.Log("hasQuest: " + player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest);
+            else
+            {
+                GenericSentences();
+            }
         }
         //displays the first sentence
         DisplayNextSentence();
@@ -159,7 +168,14 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
-        player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
+        try
+        {
+            player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
+        }
+        catch
+        {
+            player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted = true;
+        }
         animator.SetBool("isActive", false);
         buttonParent.SetActive(false);
         player.gameObject.GetComponent<SC_TPSController>().canMove = true;

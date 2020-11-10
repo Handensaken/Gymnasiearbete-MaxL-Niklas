@@ -6,7 +6,10 @@ public class MainQuestController : MonoBehaviour
 {
     public GameObject evilPersonWEEEWOOO;
     bool callOnce = false;
-    public QuestTracker QuestTracker;
+    public QuestTracker questTracker;
+    public GameObject player;
+    public GameObject jonas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +19,9 @@ public class MainQuestController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (QuestTracker.quests.ContainsKey("Greetings in order") && QuestTracker.quests.ContainsKey("New Pickaxe"))
+        if (questTracker.quests.ContainsKey("Greetings in order") && questTracker.quests.ContainsKey("New Pickaxe"))
         {
-            if (QuestTracker.quests["Greetings in order"] && QuestTracker.quests["New Pickaxe"])
+            if (questTracker.quests["Greetings in order"] && questTracker.quests["New Pickaxe"])
             {
                 if (!callOnce)
                 {
@@ -35,7 +38,18 @@ public class MainQuestController : MonoBehaviour
     }
     public void SetTrue()
     {
-        QuestTracker.quests.Add("Greetings in order", true);
-        QuestTracker.quests.Add("New Pickaxe", true);
+        questTracker.quests.Add("Greetings in order", true);
+        questTracker.quests.Add("New Pickaxe", true);
+
+        player.GetComponent<SC_TPSController>().NPCS.Add(jonas.name, jonas);
+
     }
+    public void MainQuest1()
+    {
+        questTracker.GetComponent<QuestTracker>().EndQuest();
+        jonas.GetComponent<JonasController>().dialogue.questName = "SCHEISSEFRAUEN";
+        jonas.GetComponent<JonasController>().dialogue.questInfo = "SCHEISSEFRAUEN BESKRIVNUNG";
+    }
+
 }
+
