@@ -201,6 +201,11 @@ public class SC_TPSController : MonoBehaviour
     {
 
     }*/
+    public GameObject keyIndicator;
+    void PressInstructions()
+    {
+        keyIndicator.SetActive(true);
+    }
     //Fixed Update is used for physics calculations
     void FixedUpdate()
     {
@@ -223,8 +228,13 @@ public class SC_TPSController : MonoBehaviour
                 rayData = ray;
                 validObject = true;
                 rayExists = true;
+                PressInstructions();
             }
             else { validObject = false; }
+        }
+        else
+        {
+            keyIndicator.SetActive(false);
         }
     }
 }
