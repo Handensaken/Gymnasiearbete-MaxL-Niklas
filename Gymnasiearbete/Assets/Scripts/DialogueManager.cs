@@ -160,7 +160,7 @@ public class DialogueManager : MonoBehaviour
         //sets the dialogue text's text to be sentence
         dialogueText.text = sentence;
     }
-    public void TriggerChoices()
+    public void TriggerChoices()    
     {
         buttonParent.SetActive(true);
         player.gameObject.GetComponent<SC_TPSController>().canMove = false;

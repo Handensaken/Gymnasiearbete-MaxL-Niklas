@@ -177,10 +177,10 @@ public class SC_TPSController : MonoBehaviour
             {
                 NPCS[RayHit.name].GetComponent<JonasController>().RecieveDialogueBool(true);
                 NPCS[RayHit.name].GetComponent<JonasController>().TriggerDialogue();
-                if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().dialogue.questName) && RayHit.GetComponent<JonasController>().dialogue.name == NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().target)
+               /* if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().dialogue.questName) && RayHit.GetComponent<JonasController>().dialogue.name == NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().target)
                 {
                     QuestTracker.GetComponent<QuestTracker>().EndQuest();
-                }
+                }*/
             }
             finally
             {

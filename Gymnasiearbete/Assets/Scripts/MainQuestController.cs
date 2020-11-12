@@ -10,6 +10,12 @@ public class MainQuestController : MonoBehaviour
     public GameObject player;
     public GameObject jonas;
 
+    string[] questNames = { "logic fill", "Main quest 2", "Main quest 3" };
+    string[] questDesc = { "logic fill", "Main Quest 2 description", "Main quest 3 description" };
+    int currentQuest = 0;
+
+    string[,] test = { { "" }, { "" }, { "" }, { "" }, { "" } };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,11 +50,12 @@ public class MainQuestController : MonoBehaviour
         player.GetComponent<SC_TPSController>().NPCS.Add(jonas.name, jonas);
 
     }
-    public void MainQuest1()
+    public void EndQuestDebug()
     {
         questTracker.GetComponent<QuestTracker>().EndQuest();
-        jonas.GetComponent<JonasController>().dialogue.questName = "SCHEISSEFRAUEN";
-        jonas.GetComponent<JonasController>().dialogue.questInfo = "SCHEISSEFRAUEN BESKRIVNUNG";
+        currentQuest++;
+        jonas.GetComponent<JonasController>().dialogue.questName = questNames[currentQuest];
+        jonas.GetComponent<JonasController>().dialogue.questInfo = questDesc[currentQuest];
     }
 
 }

@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 238563047}
   - component: {fileID: 238563046}
   m_Layer: 5
-  m_Name: Button
+  m_Name: end1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2483,6 +2483,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6595163750670194509}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &827346249
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827346246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &838178003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2948,7 +2962,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: end quest 1
 --- !u!222 &907241962
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4533,8 +4547,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   evilPersonWEEEWOOO: {fileID: 827346246}
-  questTracker: {fileID: 0}
-  jonas: {fileID: 0}
+  questTracker: {fileID: 247365763}
+  player: {fileID: 1956800544}
+  jonas: {fileID: 827346246}
 --- !u!4 &1473501468
 Transform:
   m_ObjectHideFlags: 0
@@ -4720,7 +4735,7 @@ GameObject:
   - component: {fileID: 1556398319}
   - component: {fileID: 1556398318}
   m_Layer: 5
-  m_Name: Button
+  m_Name: starter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8416,6 +8431,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1102804442991692963, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 558.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102804442991692963, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -235.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5540640902682407160, guid: edc90ee8fb65be14ab8b1e4fa28f4eb5,
         type: 3}
       propertyPath: NPCGameObjects.Array.data[0]
@@ -8710,6 +8735,11 @@ PrefabInstance:
       propertyPath: dialogue.questInfo
       value: main quest info 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6595163751082431985, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: m_Name
@@ -8719,6 +8749,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082431985, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: m_TagString
+      value: person
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd3e8483df88ac3449599a7862723db0, type: 3}
@@ -9081,7 +9116,7 @@ PrefabInstance:
     - target: {fileID: 8537799059104415663, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisplayNextSentence
+      value: EndDialogue
       objectReference: {fileID: 0}
     - target: {fileID: 8537799059122024609, guid: 894554471919f754dbce0e7714ba6fa0,
         type: 3}
