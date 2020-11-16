@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 
 [RequireComponent(typeof(CharacterController))]
 public class SC_TPSController : MonoBehaviour
@@ -160,12 +161,12 @@ public class SC_TPSController : MonoBehaviour
                 DialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
             }
         }
+
         //lets the player interact with a valid GameObject in range
         if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && (/*Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7 ||*/ Vector3.Distance(rayData.collider.gameObject.transform.position, transform.position) <= 7))
         {
             if (rayData.collider.CompareTag("person"))
             {
-
                 try
                 {
 
@@ -198,7 +199,7 @@ public class SC_TPSController : MonoBehaviour
         if (rayExists && activeDialogue)
         //if statement that cancels dialogue if the player moves to far from source
         {
-            if ((transform.position - rayData.collider.gameObject.transform.position).sqrMagnitude > 10 * 10)
+            if (Vector3.Distance(transform.position, rayData.collider.gameObject.transform.position) > 7)
             {
                 DialogueManager.GetComponent<DialogueManager>().EndDialogue();
             }
@@ -235,10 +236,13 @@ public class SC_TPSController : MonoBehaviour
                 rayData = ray;
                 validObject = true;
                 rayExists = true;
-                PressInstructions();
+                if (!DialogueManager.GetComponent<DialogueManager>().animator.GetBool("isActive"))
+                {
+                    PressInstructions();
+                }
+                else { keyIndicator.SetActive(false); }
             }
-            else { validObject = false; }
-            if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("main quest 1"))
+            else if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("main quest 1"))
             {
                 if (ray.collider.CompareTag("well"))
                 {
@@ -246,9 +250,16 @@ public class SC_TPSController : MonoBehaviour
                     rayData = ray;
                     validObject = true;
                     rayExists = true;
-                    PressInstructions();
+                    if (!DialogueManager.GetComponent<DialogueManager>().animator.GetBool("isActive"))
+                    {
+                        PressInstructions();
+                    }
+                    else { keyIndicator.SetActive(false); }
                 }
-                else { validObject = false; }
+            }
+            else
+            {
+                validObject = false;
             }
         }
         else

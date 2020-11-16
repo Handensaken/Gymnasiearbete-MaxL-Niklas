@@ -33,6 +33,20 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
 
     Dialogue dialogue;
+
+
+
+    public GameObject mainQuestController;
+    public Queue<string> test = new Queue<string>();
+    public string result = "";
+    private string correctResult = "147";
+    public string[,] wellInteractions = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };
+    public GameObject mainQuestWellParent;
+    public List<Button> buttonList = new List<Button>();    //lazy gang rise up we assigning in inspector boys
+    int optionNumber = -1;
+    bool donezo = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +57,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue d)
     //method for setting dialogue to UI
     {
+        Debug.Log("starting dialogue");
         isWell = false;
         dialogue = d;
         //sets the animator bool "isActive" to true
@@ -139,17 +154,11 @@ public class DialogueManager : MonoBehaviour
         //checks if we have more sentences, if not we end dialogue
         {
 
-            if (isWell)
+            if (isWell && !donezo)
             {
                 ChoiceMaking();
-                //Calling methof ChoiceMaking to start code to let the player choose the correct things to say in a certain order
-                //to complete the quest the player must say the right things in the right order. 
-                //the questgiver will say what this is. 
-                //for this a new UI element need to be made. A string Queue and a string will be made.the Queue will append to the string with Queue.Enqueue()
-                //then it will be checked if the resulting string is correct or not and the completion of the quest if it is, else the string will be reset.
                 //IN ADDITION To start the well dialogue this mission must be ACTIVE not only exist in the quests dictionary.
-
-                //Aight that's it for me today. Max signing off at 02:06 despite having to get up in about 3.5 hours.
+                return;
             }
             else
             {
@@ -199,6 +208,7 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("isActive", false);
         buttonParent.SetActive(false);
         player.gameObject.GetComponent<SC_TPSController>().canMove = true;
+        sentences.Clear();
     }
     public bool SendDialogueActive()
     //sends a bool based on if a dialogue is active or not
@@ -214,8 +224,8 @@ public class DialogueManager : MonoBehaviour
     private bool isWell;
     public void InitiateWellQuest()
     {
+        hasQuest = false;
         isWell = true;
-        Debug.Log("GOOOOOD MORNING VIETNAAAAAMM");
         string[] wellSentences = { "test", "and another test" };
         animator.SetBool("isActive", true);
 
@@ -229,9 +239,43 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
 
     }
-    private void ChoiceMaking()
+    public void ChoiceMaking()
     {
+        optionNumber++;
+        if (optionNumber > wellInteractions.GetLength(0) - 1)
+        {
+            //we done boysos but not really hehe
+            if (result == correctResult)
+            {
+                donezo = true;
+                mainQuestWellParent.SetActive(false);
+                player.gameObject.GetComponent<SC_TPSController>().canMove = true;
+                mainQuestController.GetComponent<MainQuestController>().EndQuestDebug();
+                sentences.Enqueue("THE WELL IS PLEASED");
+                DisplayNextSentence();
+                return;
+            }
+            else
+            {
+                result = "";
+                optionNumber = -1;
+                sentences.Enqueue("THE WELL IS DISPLEASED");
+                DisplayNextSentence();
+            }
+        }
+        mainQuestWellParent.SetActive(true);
+        player.gameObject.GetComponent<SC_TPSController>().canMove = false;
+        buttonList[0].GetComponentInChildren<Text>().text = wellInteractions[optionNumber, 0];
+        buttonList[1].GetComponentInChildren<Text>().text = wellInteractions[optionNumber, 1];
+        buttonList[2].GetComponentInChildren<Text>().text = wellInteractions[optionNumber, 2];
+
 
     }
 
+    public void Choice(Button test)
+    {
+        result += test.GetComponentInChildren<Text>().text;
+        sentences.Enqueue(result);
+        ChoiceMaking();
+    }
 }

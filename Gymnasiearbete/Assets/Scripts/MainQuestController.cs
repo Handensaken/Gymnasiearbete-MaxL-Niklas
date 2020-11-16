@@ -52,6 +52,7 @@ public class MainQuestController : MonoBehaviour
     }
     public void EndQuestDebug()
     {
+        Debug.Log("ended quest");
         questTracker.GetComponent<QuestTracker>().EndQuest();
         currentQuest++;
         jonas.GetComponent<JonasController>().dialogue.questName = questNames[currentQuest];
