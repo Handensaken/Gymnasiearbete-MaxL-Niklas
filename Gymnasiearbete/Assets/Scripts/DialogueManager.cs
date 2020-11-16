@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue d)
     //method for setting dialogue to UI
     {
+        isWell = false;
         dialogue = d;
         //sets the animator bool "isActive" to true
         animator.SetBool("isActive", true);
@@ -137,22 +138,38 @@ public class DialogueManager : MonoBehaviour
         if (sentences.Count == 0)
         //checks if we have more sentences, if not we end dialogue
         {
-            if (!hasQuest)
-            //checks if the npc in question has a quest
+
+            if (isWell)
             {
-                EndDialogue();
-                return;
-            }
-            else if (!activeQuest)
-            {
-                TriggerChoices();
-                return;
+                ChoiceMaking();
+                //Calling methof ChoiceMaking to start code to let the player choose the correct things to say in a certain order
+                //to complete the quest the player must say the right things in the right order. 
+                //the questgiver will say what this is. 
+                //for this a new UI element need to be made. A string Queue and a string will be made.the Queue will append to the string with Queue.Enqueue()
+                //then it will be checked if the resulting string is correct or not and the completion of the quest if it is, else the string will be reset.
+                //IN ADDITION To start the well dialogue this mission must be ACTIVE not only exist in the quests dictionary.
+
+                //Aight that's it for me today. Max signing off at 02:06 despite having to get up in about 3.5 hours.
             }
             else
             {
-                HasQuestSentences();
-                EndDialogue();
-                // return;
+                if (!hasQuest)
+                //checks if the npc in question has a quest
+                {
+                    EndDialogue();
+                    return;
+                }
+                else if (!activeQuest)
+                {
+                    TriggerChoices();
+                    return;
+                }
+                else
+                {
+                    HasQuestSentences();
+                    EndDialogue();
+                    // return;
+                }
             }
         }
         //removes the first index of sentences and returns it into the string sentence
@@ -160,7 +177,7 @@ public class DialogueManager : MonoBehaviour
         //sets the dialogue text's text to be sentence
         dialogueText.text = sentence;
     }
-    public void TriggerChoices()    
+    public void TriggerChoices()
     {
         buttonParent.SetActive(true);
         player.gameObject.GetComponent<SC_TPSController>().canMove = false;
@@ -168,13 +185,16 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
-        try
+        if (!isWell)
         {
-            player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
-        }
-        catch
-        {
-            player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted = true;
+            try
+            {
+                player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
+            }
+            catch
+            {
+                player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted = true;
+            }
         }
         animator.SetBool("isActive", false);
         buttonParent.SetActive(false);
@@ -191,6 +211,27 @@ public class DialogueManager : MonoBehaviour
         hasQuest = receivedParamater;
     }
 
+    private bool isWell;
+    public void InitiateWellQuest()
+    {
+        isWell = true;
+        Debug.Log("GOOOOOD MORNING VIETNAAAAAMM");
+        string[] wellSentences = { "test", "and another test" };
+        animator.SetBool("isActive", true);
 
+        nameText.text = "Well";
+
+        sentences.Clear();
+        foreach (string sentence in wellSentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+        DisplayNextSentence();
+
+    }
+    private void ChoiceMaking()
+    {
+
+    }
 
 }

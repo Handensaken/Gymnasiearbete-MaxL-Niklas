@@ -192,13 +192,13 @@ public class SC_TPSController : MonoBehaviour
             }
             if (rayData.collider.CompareTag("well"))
             {
-                Debug.Log("GOOOOOD MORNING VIETNAAAAAMM");
+                DialogueManager.GetComponent<DialogueManager>().InitiateWellQuest();
             }
         }
         if (rayExists && activeDialogue)
         //if statement that cancels dialogue if the player moves to far from source
         {
-            if ((transform.position - NPCS[RayHit.name].transform.position).sqrMagnitude > 10 * 10)
+            if ((transform.position - rayData.collider.gameObject.transform.position).sqrMagnitude > 10 * 10)
             {
                 DialogueManager.GetComponent<DialogueManager>().EndDialogue();
             }
