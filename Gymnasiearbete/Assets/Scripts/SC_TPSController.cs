@@ -161,32 +161,39 @@ public class SC_TPSController : MonoBehaviour
             }
         }
         //lets the player interact with a valid GameObject in range
-        if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7)
+        if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && (/*Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7 ||*/ Vector3.Distance(rayData.collider.gameObject.transform.position, transform.position) <= 7))
         {
-            try
+            if (rayData.collider.CompareTag("person"))
             {
 
-                NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
-                NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
-                if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().dialogue.questName) && RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().target)
+                try
                 {
-                    QuestTracker.GetComponent<QuestTracker>().EndQuest();
+
+                    NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
+                    NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
+                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().dialogue.questName) && RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().target)
+                    {
+                        QuestTracker.GetComponent<QuestTracker>().EndQuest();
+                    }
+                }
+                catch
+                {
+                    NPCS[RayHit.name].GetComponent<JonasController>().RecieveDialogueBool(true);
+                    NPCS[RayHit.name].GetComponent<JonasController>().TriggerDialogue();
+                    /* if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().dialogue.questName) && RayHit.GetComponent<JonasController>().dialogue.name == NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().target)
+                     {
+                         QuestTracker.GetComponent<QuestTracker>().EndQuest();
+                     }*/
+                }
+                finally
+                {
+                    Console.WriteLine("mate shits fucked you need to do something");
                 }
             }
-            catch
+            if (rayData.collider.CompareTag("well"))
             {
-                NPCS[RayHit.name].GetComponent<JonasController>().RecieveDialogueBool(true);
-                NPCS[RayHit.name].GetComponent<JonasController>().TriggerDialogue();
-               /* if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().dialogue.questName) && RayHit.GetComponent<JonasController>().dialogue.name == NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().target)
-                {
-                    QuestTracker.GetComponent<QuestTracker>().EndQuest();
-                }*/
+                Debug.Log("GOOOOOD MORNING VIETNAAAAAMM");
             }
-            finally
-            {
-                Console.WriteLine("mate shits fucked you need to do something");
-            }
-
         }
         if (rayExists && activeDialogue)
         //if statement that cancels dialogue if the player moves to far from source
@@ -231,6 +238,18 @@ public class SC_TPSController : MonoBehaviour
                 PressInstructions();
             }
             else { validObject = false; }
+            if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("main quest 1"))
+            {
+                if (ray.collider.CompareTag("well"))
+                {
+                    RayHit = ray.collider.gameObject;
+                    rayData = ray;
+                    validObject = true;
+                    rayExists = true;
+                    PressInstructions();
+                }
+                else { validObject = false; }
+            }
         }
         else
         {
