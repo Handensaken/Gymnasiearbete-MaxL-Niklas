@@ -28,9 +28,9 @@ public class QuestTracker : MonoBehaviour
     public void GreetQuest()
     {
 
-        if (greetQuest.Count == Player.GetComponent<SC_TPSController>().NPCS.Count)
+        if (greetQuest.Count == SC_TPSController.NPCS.Count)
         {
-            Player.GetComponent<SC_TPSController>().NPCS["Hans"].GetComponent<Generic_NPC>().hasQuest = true;
+            SC_TPSController.NPCS["Hans"].GetComponent<Generic_NPC>().hasQuest = true;
             EndQuest();
         }
     }
@@ -44,17 +44,17 @@ public class QuestTracker : MonoBehaviour
     {
         try
         {
-            questName.text = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().dialogue.questName;
-            questInfo.text = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().dialogue.questInfo;
+            questName.text = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().dialogue.questName;
+            questInfo.text = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().dialogue.questInfo;
         }
         catch
         {
-            questName.text = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().dialogue.questName;
-            questInfo.text = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().dialogue.questInfo;
+            questName.text = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().dialogue.questName;
+            questInfo.text = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().dialogue.questInfo;
         }
        
         quests.Add(questName.text, false);
-        Player.GetComponent<SC_TPSController>().QuestGiver = Player.GetComponent<SC_TPSController>().NPCS[Player.GetComponent<SC_TPSController>().RayHit.name];
+        Player.GetComponent<SC_TPSController>().QuestGiver = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name];
         questBox.SetActive(true);
         DialogueManager.EndDialogue();
         DialogueManager.GetComponent<DialogueManager>().activeQuest = true;

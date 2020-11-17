@@ -57,7 +57,6 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue d)
     //method for setting dialogue to UI
     {
-        Debug.Log("starting dialogue");
         isWell = false;
         dialogue = d;
         //sets the animator bool "isActive" to true
@@ -71,15 +70,15 @@ public class DialogueManager : MonoBehaviour
         try
         {
 
-            if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted && !activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+            if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
             {
                 InitialQuestSentences();
             }
-            else if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
+            else if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
             {
                 InitialSentences();
             }
-            else if (!activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+            else if (!activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
             {
                 QuestSentences();
             }
@@ -91,15 +90,15 @@ public class DialogueManager : MonoBehaviour
         }
         catch
         {
-            if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted && !activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
+            if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
             {
                 InitialQuestSentences();
             }
-            else if (!player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted)
+            else if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted)
             {
                 InitialSentences();
             }
-            else if (!activeQuest && player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
+            else if (!activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
             {
                 QuestSentences();
             }
@@ -198,11 +197,11 @@ public class DialogueManager : MonoBehaviour
         {
             try
             {
-                player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
+                SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
             }
             catch
             {
-                player.GetComponent<SC_TPSController>().NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted = true;
+                SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted = true;
             }
         }
         animator.SetBool("isActive", false);
@@ -241,6 +240,8 @@ public class DialogueManager : MonoBehaviour
     }
     public void ChoiceMaking()
     {
+        mainQuestWellParent.SetActive(true);
+
         optionNumber++;
         if (optionNumber > wellInteractions.GetLength(0) - 1)
         {
@@ -251,16 +252,20 @@ public class DialogueManager : MonoBehaviour
                 mainQuestWellParent.SetActive(false);
                 player.gameObject.GetComponent<SC_TPSController>().canMove = true;
                 mainQuestController.GetComponent<MainQuestController>().EndQuestDebug();
+                sentences.Enqueue(result);
                 sentences.Enqueue("THE WELL IS PLEASED");
                 DisplayNextSentence();
                 return;
             }
             else
             {
+                mainQuestWellParent.SetActive(false);
+                sentences.Enqueue(result);
                 result = "";
                 optionNumber = -1;
                 sentences.Enqueue("THE WELL IS DISPLEASED");
                 DisplayNextSentence();
+                return;
             }
         }
         mainQuestWellParent.SetActive(true);
@@ -275,7 +280,6 @@ public class DialogueManager : MonoBehaviour
     public void Choice(Button test)
     {
         result += test.GetComponentInChildren<Text>().text;
-        sentences.Enqueue(result);
         ChoiceMaking();
     }
 }

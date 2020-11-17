@@ -9783,7 +9783,7 @@ PrefabInstance:
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.initialSentences.Array.size
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
@@ -9793,12 +9793,12 @@ PrefabInstance:
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.questSentences.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.initialQuestSentences.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
@@ -9823,22 +9823,22 @@ PrefabInstance:
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.initialSentences.Array.data[0]
-      value: initial sentence
+      value: 'AY YO WHATS POPPING LOGANG '
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.questSentences.Array.data[0]
-      value: quest sentence
+      value: Go talk to the well.
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.hasQuestSentences.Array.data[0]
-      value: has quest sentence
+      value: go complete your objective, then come back.
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.initialQuestSentences.Array.data[0]
-      value: initial quest sentence
+      value: There is a great calamity on the way
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
@@ -9858,17 +9858,74 @@ PrefabInstance:
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.questName
-      value: main quest 1
+      value: the sentient well
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: dialogue.questInfo
-      value: main quest info 1
+      value: give the sentient well the code Jonas gave you.
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialQuestSentences.Array.data[1]
+      value: "go talk to the sentient well. Tell him \n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialQuestSentences.Array.data[2]
+      value: 147
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialQuestSentences.Array.data[3]
+      value: it's our code, he will understand.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.questSentences.Array.data[1]
+      value: 'Tell him
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.questSentences.Array.data[2]
+      value: 147
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialSentences.Array.data[1]
+      value: I JUST GOT FINISHED WITH MY
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialSentences.Array.data[2]
+      value: MORNING ROUTINE GOT A LITTLE
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialSentences.Array.data[3]
+      value: PUMP IN AT THE MAVICK HOUSE GYM
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialSentences.Array.data[4]
+      value: DRANK MY PROTEIN SHAKE
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialSentences.Array.data[5]
+      value: WENT OVER TO THE CEMENTARY
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595163751082398427, guid: cd3e8483df88ac3449599a7862723db0,
+        type: 3}
+      propertyPath: dialogue.initialSentences.Array.data[6]
+      value: AND URINATED ON AN OLD MANS GRAVE
       objectReference: {fileID: 0}
     - target: {fileID: 6595163751082431985, guid: cd3e8483df88ac3449599a7862723db0,
         type: 3}

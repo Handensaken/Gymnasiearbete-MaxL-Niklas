@@ -47,6 +47,7 @@ public class Generic_NPC : MonoBehaviour
     private void Start()
     {
         greeted = false;
+        SC_TPSController.NPCS.Add(this.name, this.gameObject);
     }
     // Start is called before the first frame update
     void OnEnable()

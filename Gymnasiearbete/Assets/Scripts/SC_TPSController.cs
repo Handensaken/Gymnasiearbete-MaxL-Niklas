@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 
+
 [RequireComponent(typeof(CharacterController))]
 public class SC_TPSController : MonoBehaviour
 {
@@ -52,11 +53,15 @@ public class SC_TPSController : MonoBehaviour
     bool validObject = false;
 
     //creates empty dictionary of type <string, GameObject>
-    public Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
+    public static Dictionary<string, GameObject> NPCS = new Dictionary<string, GameObject>();
 
     public GameObject QuestTracker;
 
     public GameObject QuestGiver;
+
+
+    public GameObject mainQuestController;
+
 
     //bool to define if player can move
     public bool canMove = true;
@@ -65,12 +70,12 @@ public class SC_TPSController : MonoBehaviour
     {
         //gets CharacterController
         characterController = GetComponent<CharacterController>();
-        foreach (GameObject NPC in NPCGameObjects)
+        /*foreach (GameObject NPC in NPCGameObjects)
         //Create <string, GameObject> dictionary from GameObject array
         {
             NPC.name = NPC.GetComponent<Generic_NPC>().GiveName();
             NPCS.Add(NPC.name, NPC);
-        }
+        }*/
 
         //sets speed to be the default speed
         speed = defaultSpeed;
@@ -163,7 +168,7 @@ public class SC_TPSController : MonoBehaviour
         }
 
         //lets the player interact with a valid GameObject in range
-        if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && (/*Vector3.Distance(NPCS[RayHit.name].transform.position, transform.position) <= 7 ||*/ Vector3.Distance(rayData.collider.gameObject.transform.position, transform.position) <= 7))
+        if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && (Vector3.Distance(rayData.collider.gameObject.transform.position, transform.position) <= 7))
         {
             if (rayData.collider.CompareTag("person"))
             {
@@ -172,19 +177,39 @@ public class SC_TPSController : MonoBehaviour
 
                     NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
                     NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
-                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().dialogue.questName) && RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS[QuestGiver.GetComponent<Generic_NPC>().dialogue.name].GetComponent<Generic_NPC>().target)
+                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("New Pickaxe"))
                     {
-                        QuestTracker.GetComponent<QuestTracker>().EndQuest();
+                        if (!QuestTracker.GetComponent<QuestTracker>().quests["New Pickaxe"])
+                        {
+                            if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["Hans"].GetComponent<Generic_NPC>().target)
+                            {
+
+                                QuestTracker.GetComponent<QuestTracker>().EndQuest();
+                            }
+
+                        }
+
+                    }
+
+                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("Main quest 2"))
+                    {
+                        Debug.Log("contains");
+                        if (!QuestTracker.GetComponent<QuestTracker>().quests["Main quest 2"])
+                        {
+                            Debug.Log("quest is active");
+                            if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["Jonas"].GetComponent<JonasController>().target)
+                            {
+                                Debug.Log("that works");
+                                mainQuestController.GetComponent<MainQuestController>().EndQuestDebug();
+                            }
+                        }
                     }
                 }
                 catch
                 {
                     NPCS[RayHit.name].GetComponent<JonasController>().RecieveDialogueBool(true);
                     NPCS[RayHit.name].GetComponent<JonasController>().TriggerDialogue();
-                    /* if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey(NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().dialogue.questName) && RayHit.GetComponent<JonasController>().dialogue.name == NPCS[QuestGiver.GetComponent<JonasController>().dialogue.name].GetComponent<JonasController>().target)
-                     {
-                         QuestTracker.GetComponent<QuestTracker>().EndQuest();
-                     }*/
+
                 }
                 finally
                 {
@@ -242,19 +267,23 @@ public class SC_TPSController : MonoBehaviour
                 }
                 else { keyIndicator.SetActive(false); }
             }
-            else if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("main quest 1"))
+            else if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("the sentient well"))
             {
-                if (ray.collider.CompareTag("well"))
+                if (!QuestTracker.GetComponent<QuestTracker>().quests["the sentient well"])
                 {
-                    RayHit = ray.collider.gameObject;
-                    rayData = ray;
-                    validObject = true;
-                    rayExists = true;
-                    if (!DialogueManager.GetComponent<DialogueManager>().animator.GetBool("isActive"))
+
+                    if (ray.collider.CompareTag("well"))
                     {
-                        PressInstructions();
+                        RayHit = ray.collider.gameObject;
+                        rayData = ray;
+                        validObject = true;
+                        rayExists = true;
+                        if (!DialogueManager.GetComponent<DialogueManager>().animator.GetBool("isActive"))
+                        {
+                            PressInstructions();
+                        }
+                        else { keyIndicator.SetActive(false); }
                     }
-                    else { keyIndicator.SetActive(false); }
                 }
             }
             else

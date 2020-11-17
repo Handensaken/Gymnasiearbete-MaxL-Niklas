@@ -12,9 +12,10 @@ public class MainQuestController : MonoBehaviour
 
     string[] questNames = { "logic fill", "Main quest 2", "Main quest 3" };
     string[] questDesc = { "logic fill", "Main Quest 2 description", "Main quest 3 description" };
-    int currentQuest = 0;
+    string[,] questDialogues = { {"logic fill" , "logic fill", ""}, {"hihuhihuhihuhihihuhihu", "hehoheheohehohehohehohe","hahahahahahhaha"}, { "is nam o clock so", "better start namming you fukkers" ,"YEP (Haha it's a twitch emote I can't blame you if you don't understand, women don't fit in there"} };
+    public int currentMainQuest = 0;
 
-    string[,] test = { { "" }, { "" }, { "" }, { "" }, { "" } };
+    
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,15 @@ public class MainQuestController : MonoBehaviour
                 }
             }
         }
+
+        if (questTracker.GetComponent<QuestTracker>().quests.ContainsKey("Main quest 2") && !questTracker.GetComponent<QuestTracker>().quests["Main quest 2"])
+        {
+            jonas.GetComponent<JonasController>().target = "Karl";
+        }
+        else
+        {
+            jonas.GetComponent<JonasController>().target = null;
+        }
     }
 
     void NowWeDoShit()
@@ -47,16 +57,23 @@ public class MainQuestController : MonoBehaviour
         questTracker.quests.Add("Greetings in order", true);
         questTracker.quests.Add("New Pickaxe", true);
 
-        player.GetComponent<SC_TPSController>().NPCS.Add(jonas.name, jonas);
+     //   SC_TPSController.NPCS.Add(jonas.name, jonas);
 
     }
     public void EndQuestDebug()
     {
         Debug.Log("ended quest");
         questTracker.GetComponent<QuestTracker>().EndQuest();
-        currentQuest++;
-        jonas.GetComponent<JonasController>().dialogue.questName = questNames[currentQuest];
-        jonas.GetComponent<JonasController>().dialogue.questInfo = questDesc[currentQuest];
+        currentMainQuest++;
+        jonas.GetComponent<JonasController>().dialogue.questName = questNames[currentMainQuest];
+        jonas.GetComponent<JonasController>().dialogue.questInfo = questDesc[currentMainQuest];
+
+        for (int i = 0; i < questDialogues.GetLength(1); i++)
+        {
+            jonas.GetComponent<JonasController>().dialogue.questSentences[i] = questDialogues[currentMainQuest, i];
+        }
+      
+
     }
 
 }

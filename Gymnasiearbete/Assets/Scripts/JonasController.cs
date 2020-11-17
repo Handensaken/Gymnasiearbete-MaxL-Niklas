@@ -19,7 +19,7 @@ public class JonasController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SC_TPSController.NPCS.Add(this.name, this.gameObject);
     }
 
     // Update is called once per frame
