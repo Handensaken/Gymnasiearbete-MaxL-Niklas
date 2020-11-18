@@ -91,5 +91,10 @@ public class QuestTracker : MonoBehaviour
             DialogueManager.EndDialogue();
         }
     }
-
+    public void FinalQuestRun()
+    {
+        Debug.Log("End Game");
+        DialogueManager.EndDialogue();
+        //End game register choice
+    }
 }

@@ -47,6 +47,7 @@ public class DialogueManager : MonoBehaviour
     bool donezo = false;
 
     public bool targetQuestDialogueBool = false;
+    public GameObject finaleButtonParent;
 
     // Start is called before the first frame update
     void Start()
@@ -171,23 +172,28 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
     }
+
+
+    public bool bigDonezo = false;
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
         //checks if we have more sentences, if not we end dialogue
         {
-            if (targetQuestDialogueBool)
+            if (targetQuestDialogueBool && !bigDonezo)
             {
                 if (questTracker.GetComponent<QuestTracker>().quests.ContainsKey("A Final Sacrifice"))
                 {
                     if (!questTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"])
                     {
                         //activate new buttons
-                        Debug.Log("new buttons go wooooo");
+                        finaleButtonParent.SetActive(true);
+                        player.gameObject.GetComponent<SC_TPSController>().canMove = false;
+                        return;
                     }
                 }
             }
-            if (isWell && !donezo)
+            else if (isWell && !donezo)
             {
                 ChoiceMaking();
                 //IN ADDITION To start the well dialogue this mission must be ACTIVE not only exist in the quests dictionary.
@@ -239,6 +245,7 @@ public class DialogueManager : MonoBehaviour
             }
         }
         animator.SetBool("isActive", false);
+        finaleButtonParent.SetActive(false);
         buttonParent.SetActive(false);
         player.gameObject.GetComponent<SC_TPSController>().canMove = true;
         sentences.Clear();
@@ -279,7 +286,6 @@ public class DialogueManager : MonoBehaviour
         optionNumber++;
         if (optionNumber > wellInteractions.GetLength(0) - 1)
         {
-            //we done boysos but not really hehe
             if (result == correctResult)
             {
                 donezo = true;

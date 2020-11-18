@@ -69,23 +69,23 @@ public class Generic_NPC : MonoBehaviour
         {
             //makes the timer go up
             timer += Time.deltaTime;
-            if (timer >= wanderTimer)
-            //checks if timer is equal to or greater than wanderTimer and calls method to find new position. Then moves to said position and resets timer
-            {
-                newPosition = RandomNavSphere(transform.position, wanderRadius, -1);
-                agent.SetDestination(newPosition);
-                timer = 0;
-                wanderTimer = Random.Range(5, 40);
-            }
-            if (transform.position != newPosition)
-            //checks if the NPC has arrived at it's new position and if not sets speed to the agent's speed to later be used in an Animator
-            {
-                speed = agent.speed;
-            }
-            else
-            {
-                speed = 0;
-            }
+            /*  if (timer >= wanderTimer)
+              //checks if timer is equal to or greater than wanderTimer and calls method to find new position. Then moves to said position and resets timer
+              {
+                  newPosition = RandomNavSphere(transform.position, wanderRadius, -1);
+                  agent.SetDestination(newPosition);
+                  timer = 0;
+                  wanderTimer = Random.Range(5, 40);
+              }
+              if (transform.position != newPosition)
+              //checks if the NPC has arrived at it's new position and if not sets speed to the agent's speed to later be used in an Animator
+              {
+                  speed = agent.speed;
+              }
+              else
+              {
+                  speed = 0;
+              }*/
         }
         else
         {
@@ -97,30 +97,56 @@ public class Generic_NPC : MonoBehaviour
         {
             if (!addOnce)
             {
-                Debug.Log("added");
                 questTracker.GetComponent<QuestTracker>().greetQuest.Add(true);
                 questTracker.GetComponent<QuestTracker>().GreetQuest();
                 addOnce = true;
             }
             //greeted = true;
         }
+        if (activateFollow)
+        {
+            Follow();
+        }
         anim.SetFloat("speed", speed);
     }
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
-    //new method for finding new position
+    /*   public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+       //new method for finding new position
+       {
+           //sets a random direction based on a random point inside a sphere with a base radius of one that is changed with the dist variable
+           Vector3 randDirection = Random.insideUnitSphere * dist;
+           //adds origin to randDirection
+           randDirection += origin;
+           //creates a NavMeshHit to store information from SamplePosition
+           NavMeshHit navHit;
+           //Samples the position closest to the source position in this case randDirection with a distance of dist and puts data in navHit.
+           //layermask is kept at -1 as there are no other navmeshes to conflict
+           NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+           //returns the position recieved from SamplePosition
+           return navHit.position;
+       }*/
+
+    Vector3 offset = new Vector3(5, 0, 5);
+    Vector3 newPos;
+    public bool activateFollow = false;
+    public void Follow()
     {
-        //sets a random direction based on a random point inside a sphere with a base radius of one that is changed with the dist variable
-        Vector3 randDirection = Random.insideUnitSphere * dist;
-        //adds origin to randDirection
-        randDirection += origin;
-        //creates a NavMeshHit to store information from SamplePosition
-        NavMeshHit navHit;
-        //Samples the position closest to the source position in this case randDirection with a distance of dist and puts data in navHit.
-        //layermask is kept at -1 as there are no other navmeshes to conflict
-        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
-        //returns the position recieved from SamplePosition
-        return navHit.position;
+        //Debug.Log("position: " + transform.position);
+        //Debug.Log("player + offset: " + Player.position);
+        if (Vector3.Distance(transform.position, Player.position) >= 10)
+        {
+            speed = Player.gameObject.GetComponent<SC_TPSController>().speed;
+            transform.position = Vector3.MoveTowards(transform.position, Player.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            speed = 0;
+        }
+
+
+        transform.LookAt(Player);
+        anim.SetFloat("speed", speed);
     }
+
 
     public void TriggerDialogue()
     //method to find DialogueManager object and initiate it's method StartDialogue with the inspector assigned dialogue as paramater
