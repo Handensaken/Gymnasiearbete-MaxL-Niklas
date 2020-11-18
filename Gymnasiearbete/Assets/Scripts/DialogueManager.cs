@@ -282,4 +282,12 @@ public class DialogueManager : MonoBehaviour
         result += test.GetComponentInChildren<Text>().text;
         ChoiceMaking();
     }
+
+
+
+
+    public void AssignSentence(string sentence)
+    {
+        sentences.Enqueue(sentence);
+    }
 }

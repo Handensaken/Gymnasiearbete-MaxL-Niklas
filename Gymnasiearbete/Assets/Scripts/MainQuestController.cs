@@ -10,9 +10,24 @@ public class MainQuestController : MonoBehaviour
     public GameObject player;
     public GameObject jonas;
 
-    string[] questNames = { "logic fill", "Main quest 2", "Main quest 3" };
-    string[] questDesc = { "logic fill", "Main Quest 2 description", "Main quest 3 description" };
-    string[,] questDialogues = { {"logic fill" , "logic fill", ""}, {"hihuhihuhihuhihihuhihu", "hehoheheohehohehohehohe","hahahahahahhaha"}, { "is nam o clock so", "better start namming you fukkers" ,"YEP (Haha it's a twitch emote I can't blame you if you don't understand, women don't fit in there"} };
+    string[] questNames = { "logic fill", "Mind of the King", "Main quest 3" };
+    string[] questDesc = { "logic fill", "Main Quest 2 description", "A Final Sacrifice" };
+    string[,] questDialogues = { 
+                                {
+                                 "logic fill" , 
+                                 "logic fill",
+                                 "logic fill"}, 
+                                {
+                                 "I need you to go talk to the lord, Karl. He is an instrumental piece to my plan.",
+                                 "But he won't come near me and I mustn't alert him. You must speak to him. I've placed a spell on you",
+                                 "that allows you to act as my conductor, through you I will be able to read his mind."
+                                }, 
+                                { 
+                                 "is nam o clock so", 
+                                 "better start namming you fukkers", 
+                                 "YEP (Haha it's a twitch emote I can't blame you if you don't understand, women don't fit in there"
+                                } 
+                               };
     public int currentMainQuest = 0;
 
     
@@ -38,9 +53,13 @@ public class MainQuestController : MonoBehaviour
             }
         }
 
-        if (questTracker.GetComponent<QuestTracker>().quests.ContainsKey("Main quest 2") && !questTracker.GetComponent<QuestTracker>().quests["Main quest 2"])
+        if (questTracker.GetComponent<QuestTracker>().quests.ContainsKey(questNames[1]) && !questTracker.GetComponent<QuestTracker>().quests[questNames[1]])
         {
             jonas.GetComponent<JonasController>().target = "Karl";
+        }
+        else if (questTracker.GetComponent<QuestTracker>().quests.ContainsKey(questNames[2]) && !questTracker.GetComponent<QuestTracker>().quests[questNames[2]])
+        {
+            jonas.GetComponent<JonasController>().target = "Bert";
         }
         else
         {

@@ -52,7 +52,7 @@ public class QuestTracker : MonoBehaviour
             questName.text = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().dialogue.questName;
             questInfo.text = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().dialogue.questInfo;
         }
-       
+
         quests.Add(questName.text, false);
         Player.GetComponent<SC_TPSController>().QuestGiver = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name];
         questBox.SetActive(true);
@@ -67,4 +67,29 @@ public class QuestTracker : MonoBehaviour
         //  questBox.SetActive(false);
         DialogueManager.GetComponent<DialogueManager>().activeQuest = false;
     }
+
+    private int noCount = 0;
+    public void FinalQuestNo()
+    {
+        DialogueManager.GetComponent<DialogueManager>().buttonParent.SetActive(false);
+        if (quests.ContainsKey("Mind of the King") && quests["Mind of the King"])
+        {
+            Debug.Log("said no");
+            noCount++;
+            if(noCount >= 2)
+            {
+                Debug.Log("End Game");
+                DialogueManager.EndDialogue();
+                //End game register choice
+                return;
+            }
+            DialogueManager.AssignSentence("Please do reconsider. This is all for the sake of your village");
+            DialogueManager.DisplayNextSentence();
+        }
+        else
+        {
+            DialogueManager.EndDialogue();
+        }
+    }
+
 }

@@ -191,10 +191,10 @@ public class SC_TPSController : MonoBehaviour
 
                     }
 
-                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("Main quest 2"))
+                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("Mind of the King"))
                     {
                         Debug.Log("contains");
-                        if (!QuestTracker.GetComponent<QuestTracker>().quests["Main quest 2"])
+                        if (!QuestTracker.GetComponent<QuestTracker>().quests["Mind of the King"])
                         {
                             Debug.Log("quest is active");
                             if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["Jonas"].GetComponent<JonasController>().target)
