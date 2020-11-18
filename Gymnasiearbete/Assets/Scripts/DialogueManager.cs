@@ -35,7 +35,7 @@ public class DialogueManager : MonoBehaviour
     Dialogue dialogue;
 
 
-
+    public GameObject questTracker;
     public GameObject mainQuestController;
     public Queue<string> test = new Queue<string>();
     public string result = "";
@@ -46,6 +46,7 @@ public class DialogueManager : MonoBehaviour
     int optionNumber = -1;
     bool donezo = false;
 
+    public bool targetQuestDialogueBool = false;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,9 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
     //public bool isActive = false;
+
+
+    string[] targetQuestDialogue;
     public void StartDialogue(Dialogue d)
     //method for setting dialogue to UI
     {
@@ -67,49 +71,62 @@ public class DialogueManager : MonoBehaviour
 
         //clears the queue sentences
         sentences.Clear();
-        try
+
+        if (targetQuestDialogueBool)
         {
+            TargetQuestSentences();
+        }
+        else
+        {
+            try
+            {
 
-            if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
-            {
-                InitialQuestSentences();
-            }
-            else if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
-            {
-                InitialSentences();
-            }
-            else if (!activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
-            {
-                QuestSentences();
-            }
+                if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+                {
+                    InitialQuestSentences();
+                }
+                else if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted)
+                {
+                    InitialSentences();
+                }
+                else if (!activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+                {
+                    QuestSentences();
+                }
 
-            else
+                else
+                {
+                    GenericSentences();
+                }
+            }
+            catch
             {
-                GenericSentences();
+                if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
+                {
+                    InitialQuestSentences();
+                }
+                else if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted)
+                {
+                    InitialSentences();
+                }
+                else if (!activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
+                {
+                    QuestSentences();
+                }
+
+                else
+                {
+                    GenericSentences();
+                }
             }
         }
-        catch
-        {
-            if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
-            {
-                InitialQuestSentences();
-            }
-            else if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted)
-            {
-                InitialSentences();
-            }
-            else if (!activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
-            {
-                QuestSentences();
-            }
-
-            else
-            {
-                GenericSentences();
-            }
-        }
-        //displays the first sentence
+        //displays the next sentence
         DisplayNextSentence();
+    }
+
+    public void SetNewSentences(string[] s)
+    {
+        targetQuestDialogue = s;
     }
 
     void GenericSentences()
@@ -147,12 +164,29 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
     }
+    void TargetQuestSentences()
+    {
+        foreach (string sentence in targetQuestDialogue)
+        {
+            sentences.Enqueue(sentence);
+        }
+    }
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
         //checks if we have more sentences, if not we end dialogue
         {
-
+            if (targetQuestDialogueBool)
+            {
+                if (questTracker.GetComponent<QuestTracker>().quests.ContainsKey("A Final Sacrifice"))
+                {
+                    if (!questTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"])
+                    {
+                        //activate new buttons
+                        Debug.Log("new buttons go wooooo");
+                    }
+                }
+            }
             if (isWell && !donezo)
             {
                 ChoiceMaking();

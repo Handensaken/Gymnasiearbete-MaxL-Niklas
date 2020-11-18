@@ -10,8 +10,8 @@ public class MainQuestController : MonoBehaviour
     public GameObject player;
     public GameObject jonas;
 
-    string[] questNames = { "logic fill", "Mind of the King", "Main quest 3" };
-    string[] questDesc = { "logic fill", "Main Quest 2 description", "A Final Sacrifice" };
+    string[] questNames = { "logic fill", "Mind of the King", "A Final Sacrifice" };
+    string[] questDesc = { "logic fill", "Main Quest 2 description", "Main Quest 3 description" };
     string[,] questDialogues = { 
                                 {
                                  "logic fill" , 
@@ -81,7 +81,6 @@ public class MainQuestController : MonoBehaviour
     }
     public void EndQuestDebug()
     {
-        Debug.Log("ended quest");
         questTracker.GetComponent<QuestTracker>().EndQuest();
         currentMainQuest++;
         jonas.GetComponent<JonasController>().dialogue.questName = questNames[currentMainQuest];

@@ -9511,6 +9511,11 @@ PrefabInstance:
       propertyPath: mainQuestController
       value: 
       objectReference: {fileID: 1473501466}
+    - target: {fileID: 946453707531527730, guid: 79fc05b16550baa4292a179b1103c411,
+        type: 3}
+      propertyPath: questTracker
+      value: 
+      objectReference: {fileID: 247365762}
     - target: {fileID: 946453707531527731, guid: 79fc05b16550baa4292a179b1103c411,
         type: 3}
       propertyPath: m_LocalPosition.x

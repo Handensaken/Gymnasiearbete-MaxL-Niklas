@@ -170,13 +170,11 @@ public class SC_TPSController : MonoBehaviour
         //lets the player interact with a valid GameObject in range
         if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && (Vector3.Distance(rayData.collider.gameObject.transform.position, transform.position) <= 7))
         {
+            DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
             if (rayData.collider.CompareTag("person"))
             {
                 try
                 {
-
-                    NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
-                    NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
                     if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("New Pickaxe"))
                     {
                         if (!QuestTracker.GetComponent<QuestTracker>().quests["New Pickaxe"])
@@ -185,6 +183,13 @@ public class SC_TPSController : MonoBehaviour
                             {
 
                                 QuestTracker.GetComponent<QuestTracker>().EndQuest();
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
+                                string[] tempArr = { "Thank you dear! Now I know to cook him a large dinner" };
+                                DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
+                            }
+                            else
+                            {
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
                             }
 
                         }
@@ -193,17 +198,43 @@ public class SC_TPSController : MonoBehaviour
 
                     if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("Mind of the King"))
                     {
-                        Debug.Log("contains");
                         if (!QuestTracker.GetComponent<QuestTracker>().quests["Mind of the King"])
                         {
-                            Debug.Log("quest is active");
                             if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["Jonas"].GetComponent<JonasController>().target)
                             {
-                                Debug.Log("that works");
                                 mainQuestController.GetComponent<MainQuestController>().EndQuestDebug();
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
+                                string[] tempArr = { "Is this about that weird mage that turned up!?", "No I don't know him! I don't know why he's here", "Yes I'll make sure he leaves soon." };
+                                DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
+                            }
+                            else
+                            {
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
                             }
                         }
                     }
+                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("A Final Sacrifice"))
+                    {
+                        if (!QuestTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"])
+                        {
+                            if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["Jonas"].GetComponent<JonasController>().target)
+                            {
+                                Debug.Log("bitch boi gon die");
+
+                                //NPCS[NPCS["Jonas"].GetComponent<JonasController>().target].GetComponent<Generic_NPC>().dialogue.
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
+                                string[] tempArr = {"AAAAAAAAAHHHHH! RAPIST!"};
+                                DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
+
+                            }
+                            else
+                            {
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
+                            }
+                        }
+                    }
+                    NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
+                    NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
                 }
                 catch
                 {
