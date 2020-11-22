@@ -177,14 +177,14 @@ public class DialogueManager : MonoBehaviour
     public bool bigDonezo = false;
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count <= 0)
         //checks if we have more sentences, if not we end dialogue
         {
-            if (targetQuestDialogueBool && !bigDonezo)
+            if (targetQuestDialogueBool)
             {
                 if (questTracker.GetComponent<QuestTracker>().quests.ContainsKey("A Final Sacrifice"))
                 {
-                    if (!questTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"])
+                    if (!questTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"] && !bigDonezo)
                     {
                         //activate new buttons
                         finaleButtonParent.SetActive(true);
@@ -192,6 +192,8 @@ public class DialogueManager : MonoBehaviour
                         return;
                     }
                 }
+                EndDialogue();
+                return;
             }
             else if (isWell && !donezo)
             {
@@ -204,6 +206,7 @@ public class DialogueManager : MonoBehaviour
                 if (!hasQuest)
                 //checks if the npc in question has a quest
                 {
+                    Debug.Log("should end");
                     EndDialogue();
                     return;
                 }
@@ -216,7 +219,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     HasQuestSentences();
                     EndDialogue();
-                    // return;
+                    return;
                 }
             }
         }
