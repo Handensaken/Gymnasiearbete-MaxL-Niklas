@@ -30,7 +30,7 @@ public class QuestTracker : MonoBehaviour
 
         if (greetQuest.Count == SC_TPSController.NPCS.Count)
         {
-            SC_TPSController.NPCS["Hans"].GetComponent<Generic_NPC>().hasQuest = true;
+            SC_TPSController.NPCS["male_blacksmith"].GetComponent<Generic_NPC>().hasQuest = true;
             EndQuest();
         }
     }

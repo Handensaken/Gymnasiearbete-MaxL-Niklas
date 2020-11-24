@@ -62,6 +62,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue d)
     //method for setting dialogue to UI
     {
+        Cursor.lockState = CursorLockMode.None;
         isWell = false;
         dialogue = d;
         //sets the animator bool "isActive" to true
@@ -94,7 +95,6 @@ public class DialogueManager : MonoBehaviour
                 {
                     QuestSentences();
                 }
-
                 else
                 {
                     GenericSentences();
@@ -114,7 +114,6 @@ public class DialogueManager : MonoBehaviour
                 {
                     QuestSentences();
                 }
-
                 else
                 {
                     GenericSentences();
@@ -134,7 +133,7 @@ public class DialogueManager : MonoBehaviour
     {
         foreach (string sentece in dialogue.genericSentences)
         {
-            sentences.Enqueue(sentence);
+            sentences.Enqueue(sentece);
         }
     }
     void InitialSentences()
@@ -206,7 +205,6 @@ public class DialogueManager : MonoBehaviour
                 if (!hasQuest)
                 //checks if the npc in question has a quest
                 {
-                    Debug.Log("should end");
                     EndDialogue();
                     return;
                 }
@@ -252,6 +250,7 @@ public class DialogueManager : MonoBehaviour
         buttonParent.SetActive(false);
         player.gameObject.GetComponent<SC_TPSController>().canMove = true;
         sentences.Clear();
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public bool SendDialogueActive()
     //sends a bool based on if a dialogue is active or not
