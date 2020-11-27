@@ -95,8 +95,13 @@ public class DialogueManager : MonoBehaviour
                 {
                     QuestSentences();
                 }
+                else if (activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
+                {
+                    HasQuestSentences();
+                }
                 else
                 {
+                    Debug.Log("generic");
                     GenericSentences();
                 }
             }
@@ -104,18 +109,26 @@ public class DialogueManager : MonoBehaviour
             {
                 if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
                 {
+                    Debug.Log("enqueueing jonas's initial quest");
                     InitialQuestSentences();
                 }
                 else if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted)
                 {
+                    Debug.Log("enqueueing jonas's inital");
                     InitialSentences();
                 }
                 else if (!activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
                 {
+                    Debug.Log("enqueueing jonas's quest ");
                     QuestSentences();
+                }
+                else if (activeQuest)
+                {
+                    HasQuestSentences();
                 }
                 else
                 {
+                    Debug.Log("enqueueing jonas's generic");
                     GenericSentences();
                 }
             }
@@ -174,6 +187,7 @@ public class DialogueManager : MonoBehaviour
 
 
     public bool bigDonezo = false;
+    public bool failEnd = false;
     public void DisplayNextSentence()
     {
         if (sentences.Count <= 0)
@@ -231,6 +245,8 @@ public class DialogueManager : MonoBehaviour
         buttonParent.SetActive(true);
         player.gameObject.GetComponent<SC_TPSController>().canMove = false;
     }
+    public bool goodEnd = false;
+    public bool evilEnd = false;
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
@@ -251,6 +267,18 @@ public class DialogueManager : MonoBehaviour
         player.gameObject.GetComponent<SC_TPSController>().canMove = true;
         sentences.Clear();
         Cursor.lockState = CursorLockMode.Locked;
+        if (failEnd)
+        {
+            mainQuestController.GetComponent<MainQuestController>().EndGame("fail");
+        }
+        else if (goodEnd)
+        {
+            mainQuestController.GetComponent<MainQuestController>().EndGame("good");
+        }
+        else if (evilEnd)
+        {
+            mainQuestController.GetComponent<MainQuestController>().EndGame("evil");
+        }
     }
     public bool SendDialogueActive()
     //sends a bool based on if a dialogue is active or not
@@ -268,7 +296,7 @@ public class DialogueManager : MonoBehaviour
     {
         hasQuest = false;
         isWell = true;
-        string[] wellSentences = { "test", "and another test" };
+        string[] wellSentences = { "I", "AM", "WELL", "SPEAK" };
         animator.SetBool("isActive", true);
 
         nameText.text = "Well";

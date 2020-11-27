@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Mail;
 public class whore : MonoBehaviour
 {
+    public LightController lC;
+    public MusicController mC;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class whore : MonoBehaviour
         };
 
         Debug.Log("sending");
-        smtpClient.Send("testet69420@gmail.com", "testet69420@gmail.com", "Sent from unity", "HELLO YOU PIECE OF SHIT TURK");
+        smtpClient.Send("testet69420@gmail.com", "testet69420@gmail.com", "Sent from unity", $"Time of day is {lC.GetTime()}. Music played is ");
 
     }
 }

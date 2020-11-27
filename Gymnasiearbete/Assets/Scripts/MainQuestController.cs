@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class MainQuestController : MonoBehaviour
 {
     public GameObject evilPersonWEEEWOOO;
@@ -10,9 +11,12 @@ public class MainQuestController : MonoBehaviour
     public GameObject player;
     public GameObject jonas;
     public GameObject dialogueManager;
+    public MusicController musicController;
+    public GameObject finaleButtonParent;
+    public whore mailAlgo;
 
     string[] questNames = { "logic fill", "Mind of the King", "A Final Sacrifice" };
-    string[] questDesc = { "logic fill", "Main Quest 2 description", "Main Quest 3 description" };
+    string[] questDesc = { "logic fill", "Talk to Karl", "Bring a child to Jonas" };
     string[,] questDialogues = {
                                 {
                                  "logic fill" ,
@@ -24,9 +28,9 @@ public class MainQuestController : MonoBehaviour
                                  "that allows you to act as my conductor, through you I will be able to read his mind."
                                 },
                                 {
-                                 "is nam o clock so",
-                                 "better start namming you fukkers",
-                                 "YEP (Haha it's a twitch emote I can't blame you if you don't understand, women don't fit in there"
+                                 "Finally I need you to bring me a child, for what i shall not say. Just trust me.",
+                                 "It is all so I can save your puny village.",
+                                 "Now make haste and come back with a child in tow!"
                                 }
                                };
     public int currentMainQuest = 0;
@@ -71,6 +75,7 @@ public class MainQuestController : MonoBehaviour
     void NowWeDoShit()
     {
         evilPersonWEEEWOOO.SetActive(true);
+        musicController.PlaySpooky();
     }
     public void SetTrue()
     {
@@ -97,28 +102,55 @@ public class MainQuestController : MonoBehaviour
     int bringAttempts = 0;
     public void BringKid(Button b)
     {
-        
+        bringAttempts++;
+
         string desiredChoice = "correct";
 
         if (b.GetComponentInChildren<Text>().text == desiredChoice)
         {
-            
+
             dialogueManager.GetComponent<DialogueManager>().AssignSentence("Say no more weirdy strange man who likes kids! I am hooked!");
             dialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
             dialogueManager.GetComponent<DialogueManager>().bigDonezo = true;
             SC_TPSController.NPCS["boy_home_1"].GetComponent<Generic_NPC>().activateFollow = true;
+            finaleButtonParent.SetActive(false);
         }
-        else if (bringAttempts <= 3)
+        else if (bringAttempts < 2)
         {
-            bringAttempts++;
-            dialogueManager.GetComponent<DialogueManager>().AssignSentence("That's not enough to make me follow a you even if we talked before. Mom warned me about you people, she called them pedos");
+            dialogueManager.GetComponent<DialogueManager>().AssignSentence("That's not enough to make me follow you even if we talked before. Mom warned me about you people, she called them pedos");
+            dialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
+            finaleButtonParent.SetActive(false);
         }
         else
         {
             dialogueManager.GetComponent<DialogueManager>().AssignSentence("AAAAAAAAAAARGHHH! HELP! HELP! I'M BEING KIDNAPPED");
-            Debug.Log("end game");
+            dialogueManager.GetComponent<DialogueManager>().failEnd = true;
+            dialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
+            finaleButtonParent.SetActive(false);
+            dialogueManager.GetComponent<DialogueManager>().bigDonezo = true;
         }
 
+    }
+
+    public void EndGame(string s)
+    {
+        mailAlgo.SendMail();
+        if (s == "good")
+        {
+            SceneManager.LoadScene(3);
+        }
+        else if (s == "evil")
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if (s == "fail")
+        {
+            SceneManager.LoadScene(4);
+        }
+        else
+        {
+            Debug.Log("something is written wrong");
+        }
     }
 
 }

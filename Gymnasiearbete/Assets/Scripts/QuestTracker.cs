@@ -12,13 +12,14 @@ public class QuestTracker : MonoBehaviour
     //public static List<string> quests = new List<string>();
     public Dictionary<string, bool> quests = new Dictionary<string, bool>();
     public GameObject Player;
-    public DialogueManager DialogueManager;
+    public DialogueManager dialogueManager;
 
     public Text questName;
     public Text questInfo;
 
     public GameObject questBox;
 
+    public MainQuestController mainQuestController;
 
     public List<bool> greetQuest = new List<bool>();
     private void Update()
@@ -31,6 +32,7 @@ public class QuestTracker : MonoBehaviour
         if (greetQuest.Count == SC_TPSController.NPCS.Count)
         {
             SC_TPSController.NPCS["male_blacksmith"].GetComponent<Generic_NPC>().hasQuest = true;
+            SC_TPSController.NPCS["female_square_1"].GetComponent<Generic_NPC>().hasQuest = false;
             EndQuest();
         }
     }
@@ -56,8 +58,8 @@ public class QuestTracker : MonoBehaviour
         quests.Add(questName.text, false);
         Player.GetComponent<SC_TPSController>().QuestGiver = SC_TPSController.NPCS[Player.GetComponent<SC_TPSController>().RayHit.name];
         questBox.SetActive(true);
-        DialogueManager.EndDialogue();
-        DialogueManager.GetComponent<DialogueManager>().activeQuest = true;
+        dialogueManager.EndDialogue();
+        dialogueManager.GetComponent<DialogueManager>().activeQuest = true;
     }
     public void EndQuest()
     {
@@ -65,36 +67,29 @@ public class QuestTracker : MonoBehaviour
         Invoke("DoThing", 5.0f);
         quests[questName.text] = true;
         //  questBox.SetActive(false);
-        DialogueManager.GetComponent<DialogueManager>().activeQuest = false;
+        dialogueManager.GetComponent<DialogueManager>().activeQuest = false;
     }
 
     private int noCount = 0;
     public void FinalQuestNo()
     {
-        DialogueManager.GetComponent<DialogueManager>().buttonParent.SetActive(false);
+        dialogueManager.GetComponent<DialogueManager>().buttonParent.SetActive(false);
         if (quests.ContainsKey("Mind of the King") && quests["Mind of the King"])
         {
-            Debug.Log("said no");
             noCount++;
             if(noCount >= 2)
             {
-                Debug.Log("End Game");
-                DialogueManager.EndDialogue();
+                dialogueManager.goodEnd = true;
+                dialogueManager.EndDialogue();
                 //End game register choice
                 return;
             }
-            DialogueManager.AssignSentence("Please do reconsider. This is all for the sake of your village");
-            DialogueManager.DisplayNextSentence();
+            dialogueManager.AssignSentence("Please do reconsider. This is all for the sake of your village");
+            dialogueManager.DisplayNextSentence();
         }
         else
         {
-            DialogueManager.EndDialogue();
+            dialogueManager.EndDialogue();
         }
-    }
-    public void FinalQuestRun()
-    {
-        Debug.Log("End Game");
-        DialogueManager.EndDialogue();
-        //End game register choice
     }
 }

@@ -82,7 +82,7 @@ public class SC_TPSController : MonoBehaviour
         //gets rotation based on angles for Y axis.
         rotation.y = transform.eulerAngles.y;
         //locks the cursor to the middle of the screen and hides it there
-        Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Locked;
         //gets animator
         thisAnim.GetComponent<Animator>();
     }
@@ -224,7 +224,10 @@ public class SC_TPSController : MonoBehaviour
                             {
                                 if (RayHit.GetComponent<JonasController>().dialogue.name == "Jonas" && Vector3.Distance(NPCS["boy_home_1"].transform.position, NPCS["Jonas"].transform.position) <= 20)
                                 {
-                                    Debug.Log("HAHA MEGALOL TALK WORK NOW FIx REST  YOU R FUCKING SUCKING");
+                                    DialogueManager.GetComponent<DialogueManager>().evilEnd = true;
+                                    DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
+                                    string[] tempArr = { "Good. Good. He will make a fine tribute.", "Now make yourself scarce and don't look back." };
+                                    DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
                                 }
                                 else
                                 {
