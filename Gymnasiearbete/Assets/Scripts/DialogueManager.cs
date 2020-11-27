@@ -294,6 +294,7 @@ public class DialogueManager : MonoBehaviour
     private bool isWell;
     public void InitiateWellQuest()
     {
+        Cursor.lockState = CursorLockMode.None;
         hasQuest = false;
         isWell = true;
         string[] wellSentences = { "I", "AM", "WELL", "SPEAK" };

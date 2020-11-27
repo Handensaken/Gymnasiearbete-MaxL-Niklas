@@ -41,8 +41,7 @@ public class FailOutro : MonoBehaviour
             }
             hello.Clear();
         }
-        //SceneManager.LoadScene();
-        Debug.Log("Find final screen");
+        SceneManager.LoadScene(6);
         yield break;
     }
 }

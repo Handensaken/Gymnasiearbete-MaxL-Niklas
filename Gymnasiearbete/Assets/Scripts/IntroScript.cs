@@ -41,7 +41,7 @@ public class IntroScript : MonoBehaviour
             }
             hello.Clear();
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         yield break;
     }
 }

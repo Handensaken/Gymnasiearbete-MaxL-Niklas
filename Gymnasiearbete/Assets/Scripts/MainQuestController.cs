@@ -15,6 +15,8 @@ public class MainQuestController : MonoBehaviour
     public GameObject finaleButtonParent;
     public whore mailAlgo;
 
+    public GameObject questIndicator;
+
     string[] questNames = { "logic fill", "Mind of the King", "A Final Sacrifice" };
     string[] questDesc = { "logic fill", "Talk to Karl", "Bring a child to Jonas" };
     string[,] questDialogues = {
@@ -76,6 +78,7 @@ public class MainQuestController : MonoBehaviour
     {
         evilPersonWEEEWOOO.SetActive(true);
         musicController.PlaySpooky();
+        StartCoroutine(Indicate("A looming presence has appeared, I should search the town"));
     }
     public void SetTrue()
     {
@@ -96,6 +99,17 @@ public class MainQuestController : MonoBehaviour
             jonas.GetComponent<JonasController>().dialogue.questSentences[i] = questDialogues[currentMainQuest, i];
         }
 
+
+    }
+    IEnumerator Indicate(string s)
+    {
+        yield return new WaitForSeconds(2);
+        questIndicator.SetActive(true);
+        questIndicator.GetComponentInChildren<Text>().text = s;
+        questIndicator.GetComponentInChildren<Text>().fontSize = 18;
+        yield return new WaitForSeconds(7);
+        questIndicator.SetActive(false);
+        yield break;
 
     }
 
@@ -137,15 +151,15 @@ public class MainQuestController : MonoBehaviour
         mailAlgo.SendMail();
         if (s == "good")
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
         else if (s == "evil")
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
         else if (s == "fail")
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(5);
         }
         else
         {

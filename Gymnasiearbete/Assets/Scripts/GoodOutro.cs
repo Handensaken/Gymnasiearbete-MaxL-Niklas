@@ -5,14 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
-public class EvilOutro : MonoBehaviour
+public class GoodOutro : MonoBehaviour
 {
     public Queue<string> introText = new Queue<string>();
     public Text text;
     // Start is called before the first frame update
     void Start()
     {
-        string[] allText = { "Bert oh Bert", "Poor soul.", "I decided to help Jonas in exchange for him helping the village","He had promised to save the village from a great calamity.", "If I just would have known...", "The Demon King's armies were headed our direction. That was the calamity Joans had referred to.", "Because I trusted Jonas, I led an innocent child to him. He killed that child.", "Bert oh Bert...", "He used that child as a sacrifice for using powerful environmental tier magic.", "The next thing I knew a large flood of lava was headed for the village.", "Was this Jonas's work? That I do not know.","You see in the same moment the Demon King's army appeared on the horizon and was met by the Kingdom's Angelic Guard.", "They bought enough time for most to escape unscathed. But that is a tale for another time.","Still I do not know wether the flood was because of Jonas or the Demon King, I never met Jonas again after the incident.","Bert oh Bert..." };
+        string[] allText = { "I staunchly decided not to trust the young Wizard.", "Jonas.", "That's a name I will never forget.", "Because I refused to help him he unleashed waves of catasrophies upon the town.", "Raining frogs, swarms of mosquitoes, alternating temperatures, et cetra.", "It was a miracle I managed to escape, otherwise I wouldn't be telling this story.", "The others weren't as lucky.", "Sometimes I can't help but blame myself for their passing..." };
         StartCoroutine(DelayTest(allText));
     }
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class EvilOutro : MonoBehaviour
             }
             hello.Clear();
         }
-        Debug.Log("Final Scene");
+        SceneManager.LoadScene(6);
         yield break;
     }
 }

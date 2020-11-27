@@ -239,7 +239,7 @@ public class SC_TPSController : MonoBehaviour
                                 if (RayHit.GetComponent<Generic_NPC>().dialogue.name == "Bert")
                                 {
                                     DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
-                                    string[] tempArr = { "AAAAAAAAAHHHHH! RAPIST!" };
+                                    string[] tempArr = { "Ay yo what's popping?" };
                                     DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
 
                                 }
@@ -290,25 +290,6 @@ public class SC_TPSController : MonoBehaviour
     }*/
 
 
-    void iamlosingmymind()
-    {
-        Debug.Log("running method iamlosingmymind();");
-        if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("A Final Sacrifice"))
-        {
-            Debug.Log("contains A Final Sacrifice");
-            Debug.Log("completion: " + QuestTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"]);
-            if (!QuestTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"])
-            {
-                Debug.Log("name: " + RayHit.GetComponent<Generic_NPC>().dialogue.name);
-                Debug.Log("distance: " + Vector3.Distance(NPCS["boy_home_1"].transform.position, NPCS["Jonas"].transform.position));
-                if (RayHit.GetComponent<Generic_NPC>().dialogue.name == "Jonas" && Vector3.Distance(NPCS["boy_home_1"].transform.position, NPCS["Jonas"].transform.position) <= 20)
-                {
-                    Debug.Log("GAME FINISHED");
-                }
-            }
-        }
-
-    }
 
     public GameObject keyIndicator;
     void PressInstructions()

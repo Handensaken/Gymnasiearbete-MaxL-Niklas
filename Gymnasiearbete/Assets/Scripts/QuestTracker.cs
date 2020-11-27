@@ -20,10 +20,12 @@ public class QuestTracker : MonoBehaviour
     public GameObject questBox;
 
     public MainQuestController mainQuestController;
+    public GameObject questIndicator;
 
     public List<bool> greetQuest = new List<bool>();
-    private void Update()
+    private void Start()
     {
+        StartCoroutine(Indicate("I was told to speak with the Wellkeeper", 24));
     }
 
     public void GreetQuest()
@@ -34,6 +36,7 @@ public class QuestTracker : MonoBehaviour
             SC_TPSController.NPCS["male_blacksmith"].GetComponent<Generic_NPC>().hasQuest = true;
             SC_TPSController.NPCS["female_square_1"].GetComponent<Generic_NPC>().hasQuest = false;
             EndQuest();
+            StartCoroutine(Indicate("Hans said I should go to him when I had greeted everyone", 18));
         }
     }
 
@@ -77,7 +80,7 @@ public class QuestTracker : MonoBehaviour
         if (quests.ContainsKey("Mind of the King") && quests["Mind of the King"])
         {
             noCount++;
-            if(noCount >= 2)
+            if (noCount >= 2)
             {
                 dialogueManager.goodEnd = true;
                 dialogueManager.EndDialogue();
@@ -91,5 +94,15 @@ public class QuestTracker : MonoBehaviour
         {
             dialogueManager.EndDialogue();
         }
+    }
+    IEnumerator Indicate(string s, int fs)
+    {
+        yield return new WaitForSeconds(2);
+        questIndicator.SetActive(true);
+        questIndicator.GetComponentInChildren<Text>().text = s;
+        questIndicator.GetComponentInChildren<Text>().fontSize = fs;
+        yield return new WaitForSeconds(7);
+        questIndicator.SetActive(false);
+
     }
 }
