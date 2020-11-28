@@ -21,6 +21,7 @@ public class whore : MonoBehaviour
 
     public void SendMail()
     {
+        Debug.Log("sending mail");
         var smtpClient = new SmtpClient("smtp.gmail.com")
         {
             Port = 587,
@@ -29,7 +30,7 @@ public class whore : MonoBehaviour
         };
 
         Debug.Log("sending");
-        smtpClient.Send("testet69420@gmail.com", "testet69420@gmail.com", "Sent from unity", $"Time of day is {lC.GetTime()}. Music played is ");
+        smtpClient.Send("testet69420@gmail.com", "testet69420@gmail.com", "Sent from unity", $"Time of day is {lC.GetTime()}. Music played is {mC.GetMusic()}");
 
     }
 }

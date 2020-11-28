@@ -394,7 +394,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.32
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1225,7 +1225,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.409
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1830,7 +1830,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2854,7 +2854,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.32
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5222,6 +5222,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7782211973152136658}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1505709682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505709680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d03fccb5e7d924caa77a17e2b04978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1548343314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6078,6 +6090,7 @@ MonoBehaviour:
     initialQuestSentences:
     - 'Hello! I''m Linda, the wellkeeper. '
     - Well I like wells so I usually stay well withing reach of the well.
+    - Well how about you start off by greeting everyone.
     questName: Greetings in order
     questInfo: Greet everyone in town
   anim: {fileID: 1712656461}
@@ -6607,7 +6620,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6831,7 +6844,7 @@ MonoBehaviour:
 
       we live in the south part of town.'
     questName: New Pickaxe
-    questInfo: Talk to Hans' wife in the south part of town
+    questInfo: Talk to Alice
   anim: {fileID: 1841440842}
   greeted: 0
   targeted: 0
@@ -7218,7 +7231,17 @@ PrefabInstance:
     - target: {fileID: 5514800147049683706, guid: cc3583afdeb216c40b2166c13468bd1b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1577
+      value: 1577.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5514800147049683706, guid: cc3583afdeb216c40b2166c13468bd1b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 113.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5514800147049683706, guid: cc3583afdeb216c40b2166c13468bd1b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1252.3
       objectReference: {fileID: 0}
     - target: {fileID: 5514800147149664019, guid: cc3583afdeb216c40b2166c13468bd1b,
         type: 3}
@@ -10016,7 +10039,7 @@ PrefabInstance:
     - target: {fileID: 7782211974125290139, guid: 78b184d26f52a9f418ffac17a89090bc,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7971366754164100347, guid: 78b184d26f52a9f418ffac17a89090bc,
         type: 3}

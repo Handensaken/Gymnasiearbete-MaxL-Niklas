@@ -82,7 +82,7 @@ public class SC_TPSController : MonoBehaviour
         //gets rotation based on angles for Y axis.
         rotation.y = transform.eulerAngles.y;
         //locks the cursor to the middle of the screen and hides it there
-            Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         //gets animator
         thisAnim.GetComponent<Animator>();
     }
@@ -148,17 +148,14 @@ public class SC_TPSController : MonoBehaviour
         bool activeDialogue = DialogueManager.GetComponent<DialogueManager>().SendDialogueActive();
 
         // Player and Camera rotation
-        if (transform.position.y > -4)
+        if (!activeDialogue)
         {
-            if (!activeDialogue)
-            {
-                rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
-                rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;        //gets rotation from mouse movement'
-            }
-            rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);  //clamps rotation x between looklimits
-            playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);  //applies rotation to transform
-            transform.eulerAngles = new Vector2(0, rotation.y); //applies y rotation to transform
+            rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
+            rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;        //gets rotation from mouse movement'
         }
+        rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);  //clamps rotation x between looklimits
+        playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);  //applies rotation to transform
+        transform.eulerAngles = new Vector2(0, rotation.y); //applies y rotation to transform
 
 
         //Gets bool to check if a dialogue is active if it is, lets player continue the dialogue;
