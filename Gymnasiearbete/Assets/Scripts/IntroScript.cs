@@ -29,15 +29,15 @@ public class IntroScript : MonoBehaviour
             foreach (char c in sentence)
             {
                 text.text += c;
-                yield return new WaitForSeconds(0.15f);
+                yield return new WaitForSeconds(0.1f);
                 hello.Add(text.text);
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             //text.text = "";
             for (int i = hello.Count; i > 0; i--)
             {
                 text.text = hello[i-1];
-                yield return new WaitForSeconds(0.06f);
+                yield return new WaitForSeconds(0.01f);
             }
             hello.Clear();
         }

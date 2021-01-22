@@ -12,7 +12,7 @@ public class GoodOutro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string[] allText = { "I staunchly decided not to trust the young Wizard.", "Jonas.", "That's a name I will never forget.", "Because I refused to help him he unleashed waves of catasrophies upon the town.", "Raining frogs, swarms of mosquitoes, alternating temperatures, et cetra.", "It was a miracle I managed to escape, otherwise I wouldn't be telling this story.", "The others weren't as lucky.", "Sometimes I can't help but blame myself for their passing..." };
+        string[] allText = { "Aight that's it, thanks for playing mate", "Originally there was a story here but given that it was cringy af I removed it" };
         StartCoroutine(DelayTest(allText));
     }
     // Update is called once per frame
@@ -29,15 +29,15 @@ public class GoodOutro : MonoBehaviour
             foreach (char c in sentence)
             {
                 text.text += c;
-                yield return new WaitForSeconds(0.15f);
+                yield return new WaitForSeconds(0.1f);
                 hello.Add(text.text);
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             //text.text = "";
             for (int i = hello.Count; i > 0; i--)
             {
                 text.text = hello[i - 1];
-                yield return new WaitForSeconds(0.06f);
+                yield return new WaitForSeconds(0.01f);
             }
             hello.Clear();
         }

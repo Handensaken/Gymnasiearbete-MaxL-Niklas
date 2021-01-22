@@ -12,7 +12,7 @@ public class EvilOutro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string[] allText = { "Bert oh Bert", "Poor soul.", "I decided to help Jonas in exchange for him helping the village","He had promised to save the village from a great calamity.", "If I just would have known...", "The Demon King's armies were headed our direction. That was the calamity Joans had referred to.", "Because I trusted Jonas, I led an innocent child to him. He killed that child.", "Bert oh Bert...", "He used that child as a sacrifice for using powerful environmental tier magic.", "The next thing I knew a large flood of lava was headed for the village.", "Was this Jonas's work? That I do not know.","You see in the same moment the Demon King's army appeared on the horizon and was met by the Kingdom's Angelic Guard.", "They bought enough time for most to escape unscathed. But that is a tale for another time.","Still I do not know wether the flood was because of Jonas or the Demon King, I never met Jonas again after the incident.","Bert oh Bert..." };
+        string[] allText = { "Aight that's it, thanks for playing mate", "Originally there was a story here but given that it was cringy af I removed it" };
         StartCoroutine(DelayTest(allText));
     }
     // Update is called once per frame
@@ -29,15 +29,15 @@ public class EvilOutro : MonoBehaviour
             foreach (char c in sentence)
             {
                 text.text += c;
-                yield return new WaitForSeconds(0.15f);
+                yield return new WaitForSeconds(0.1f);
                 hello.Add(text.text);
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             //text.text = "";
             for (int i = hello.Count; i > 0; i--)
             {
                 text.text = hello[i - 1];
-                yield return new WaitForSeconds(0.06f);
+                yield return new WaitForSeconds(0.01f);
             }
             hello.Clear();
         }

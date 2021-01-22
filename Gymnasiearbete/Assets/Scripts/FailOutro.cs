@@ -12,7 +12,7 @@ public class FailOutro : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string[] allText = {"I failed to get the young Bert to follow me.", "Sometimes i think it was for the better.","Still I can't help but think the catastrophy could have been prevented..."};
+        string[] allText = { "Aight that's it, thanks for playing mate", "Originally there was a story here but given that it was cringy af I removed it" };
         StartCoroutine(DelayTest(allText));
     }
     // Update is called once per frame
@@ -29,15 +29,15 @@ public class FailOutro : MonoBehaviour
             foreach (char c in sentence)
             {
                 text.text += c;
-                yield return new WaitForSeconds(0.15f);
+                yield return new WaitForSeconds(0.1f);
                 hello.Add(text.text);
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             //text.text = "";
             for (int i = hello.Count; i > 0; i--)
             {
                 text.text = hello[i - 1];
-                yield return new WaitForSeconds(0.06f);
+                yield return new WaitForSeconds(0.01f);
             }
             hello.Clear();
         }

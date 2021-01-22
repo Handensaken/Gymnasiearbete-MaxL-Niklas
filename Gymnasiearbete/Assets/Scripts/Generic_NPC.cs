@@ -99,6 +99,65 @@ public class Generic_NPC : MonoBehaviour
             {
                 questTracker.GetComponent<QuestTracker>().greetQuest.Add(true);
                 questTracker.GetComponent<QuestTracker>().GreetQuest();
+
+                switch (name)
+                {
+                    case "female_square_2":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[7].SetActive(false);
+                            break;
+                        }
+                    case "male_tavern_1":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[5].SetActive(false);
+
+                            break;
+                        }
+                    case "female_home_1":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[1].SetActive(false);
+
+                            break;
+                        }
+                    case "female_home_2":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[2].SetActive(false);
+
+                            break;
+                        }
+                    case "female_home_3":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[3].SetActive(false);
+
+                            break;
+                        }
+                    case "boy_home_1":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[4].SetActive(false);
+
+                            break;
+                        }
+                    case "male_miner_1":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[9].SetActive(false);
+
+                            break;
+                        }
+                    case "male_lord":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[6].SetActive(false);
+
+                            break;
+                        }
+                    case "male_blacksmith":
+                        {
+                            questTracker.GetComponent<QuestTracker>().questMarks[8].SetActive(false);
+
+                            break;
+                        }
+                }
+
+
                 addOnce = true;
             }
             //greeted = true;

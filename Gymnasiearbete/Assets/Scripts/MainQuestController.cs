@@ -17,6 +17,8 @@ public class MainQuestController : MonoBehaviour
 
     public GameObject questIndicator;
 
+
+
     string[] questNames = { "logic fill", "Mind of the King", "A Final Sacrifice" };
     string[] questDesc = { "logic fill", "Talk to Karl", "Bring a child to Jonas" };
     string[,] questDialogues = {
@@ -27,7 +29,7 @@ public class MainQuestController : MonoBehaviour
                                 {
                                  "I need you to go talk to the lord, Karl. He is an instrumental piece to my plan.",
                                  "But he won't come near me and I mustn't alert him. You must speak to him. I've placed a spell on you",
-                                 "that allows you to act as my conductor, through you I will be able to read his mind."
+                                 "that allows you to act as my conductor, through you I will be able to read his mind. Do this and return"
                                 },
                                 {
                                  "Finally I need you to bring me a child, for what i shall not say. Just trust me.",
@@ -54,6 +56,7 @@ public class MainQuestController : MonoBehaviour
             {
                 if (!callOnce)
                 {
+                    //SC_TPSController.NPCS["male blacksmith"].GetComponent<Generic_NPC>().hasQuest = false;
                     NowWeDoShit();
                     callOnce = true;
                 }
@@ -78,7 +81,9 @@ public class MainQuestController : MonoBehaviour
     {
         evilPersonWEEEWOOO.SetActive(true);
         musicController.PlaySpooky();
-        StartCoroutine(Indicate("A looming presence has appeared, I should search the town"));
+        StartCoroutine(Indicate("A mysterious stranger has ARRIVED to town"));
+        questTracker.questMarks[11  ].SetActive(true);
+
     }
     public void SetTrue()
     {
@@ -118,7 +123,7 @@ public class MainQuestController : MonoBehaviour
     {
         bringAttempts++;
 
-        string desiredChoice = "correct";
+        string desiredChoice = "Your father is hurt! Come!";
 
         if (b.GetComponentInChildren<Text>().text == desiredChoice)
         {
@@ -128,6 +133,8 @@ public class MainQuestController : MonoBehaviour
             dialogueManager.GetComponent<DialogueManager>().bigDonezo = true;
             SC_TPSController.NPCS["boy_home_1"].GetComponent<Generic_NPC>().activateFollow = true;
             finaleButtonParent.SetActive(false);
+            questTracker.questMarks[4].SetActive(false);
+            questTracker.questMarks[11].SetActive(true);
         }
         else if (bringAttempts < 2)
         {
@@ -148,17 +155,19 @@ public class MainQuestController : MonoBehaviour
 
     public void EndGame(string s)
     {
-        mailAlgo.SendMail();
         if (s == "good")
         {
+            mailAlgo.SendMail("refused");
             SceneManager.LoadScene(4);
         }
         else if (s == "evil")
         {
+            mailAlgo.SendMail("complied");
             SceneManager.LoadScene(3);
         }
         else if (s == "fail")
         {
+            mailAlgo.SendMail("failed the quest");
             SceneManager.LoadScene(5);
         }
         else

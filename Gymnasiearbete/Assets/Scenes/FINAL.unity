@@ -224,7 +224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076293945, y: -0.9}
+  m_AnchoredPosition: {x: -0.0000076293945, y: -9}
   m_SizeDelta: {x: 493.55432, y: 656.4827}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429751909
@@ -272,12 +272,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Thank you for playing!\nThis was my diploma project and\nI hope it gave
-    you at least some\nfun. Whether through the gameplay\nor through laughing at
-    the poor quality.\n\nIn my defence this is my first larger game and my first
-    game in 3D\n\nPress space to exit\n\nMusic: \nKetsa - Drowning Air avaliable
-    at freemusicarchive.org\nFesliyan Studios - Touch of Love, Happy dreams, Mysterious
-    Suspense, Scarey Atmospheres\navaliable at fesliyanstudios.com"
+  m_Text: "Thanks for playing, I know the game is shit, cut me some slack.\nThis
+    is the final screen, there is nothing more here :)\n\nMusic: \nKetsa - Drowning
+    Air avaliable at freemusicarchive.org\nFesliyan Studios - Touch of Love, Happy
+    dreams, Mysterious Suspense, Scarey Atmospheres\navaliable at fesliyanstudios.com"
 --- !u!222 &429751911
 CanvasRenderer:
   m_ObjectHideFlags: 0

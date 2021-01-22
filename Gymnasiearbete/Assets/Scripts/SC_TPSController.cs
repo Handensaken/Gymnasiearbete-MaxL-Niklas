@@ -10,6 +10,8 @@ using System.ComponentModel.Design;
 [RequireComponent(typeof(CharacterController))]
 public class SC_TPSController : MonoBehaviour
 {
+
+    public GameObject logError;
     //sets the default speed for the player
     public float defaultSpeed = 7.5f;
     public float sprintSpeed = 15;
@@ -42,6 +44,9 @@ public class SC_TPSController : MonoBehaviour
     public GameObject[] NPCGameObjects;
     //creates GameObject to use DialogueManager
     public GameObject DialogueManager;
+
+
+    public GameObject fuckerMan;
 
     //creates bool to read if ray exists
     bool rayExists = false;
@@ -82,7 +87,7 @@ public class SC_TPSController : MonoBehaviour
         //gets rotation based on angles for Y axis.
         rotation.y = transform.eulerAngles.y;
         //locks the cursor to the middle of the screen and hides it there
-        Cursor.lockState = CursorLockMode.Locked;
+         Cursor.lockState = CursorLockMode.Locked;
         //gets animator
         thisAnim.GetComponent<Animator>();
     }
@@ -170,102 +175,109 @@ public class SC_TPSController : MonoBehaviour
         //lets the player interact with a valid GameObject in range
         if (Input.GetKeyDown(KeyCode.E) && validObject && !activeDialogue && (Vector3.Distance(rayData.collider.gameObject.transform.position, transform.position) <= 7))
         {
+
+
             DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
             if (rayData.collider.CompareTag("person"))
             {
-                try
+
+                if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("New Pickaxe"))
                 {
-                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("New Pickaxe"))
+                    if (!QuestTracker.GetComponent<QuestTracker>().quests["New Pickaxe"])
                     {
-                        if (!QuestTracker.GetComponent<QuestTracker>().quests["New Pickaxe"])
+                        if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["male_blacksmith"].GetComponent<Generic_NPC>().target)
                         {
-                            if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["male_blacksmith"].GetComponent<Generic_NPC>().target)
-                            {
 
-                                QuestTracker.GetComponent<QuestTracker>().EndQuest();
-                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
-                                string[] tempArr = { "Thank you dear! Now I know to cook him a large dinner" };
-                                DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
-                            }
-                            else
-                            {
-                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
-                            }
-
+                            QuestTracker.GetComponent<QuestTracker>().EndQuest();
+                            DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
+                            string[] tempArr = { "Thank you dear! Now I know to cook him a large dinner" };
+                            DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
+                            SC_TPSController.NPCS["male_blacksmith"].GetComponent<Generic_NPC>().hasQuest = false;
+                            QuestTracker.GetComponent<QuestTracker>().questMarks[3].SetActive(false);
+                        }
+                        else
+                        {
+                            DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
                         }
 
                     }
 
-                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("Mind of the King"))
-                    {
-                        if (!QuestTracker.GetComponent<QuestTracker>().quests["Mind of the King"])
-                        {
-                            if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["Jonas"].GetComponent<JonasController>().target)
-                            {
-                                mainQuestController.GetComponent<MainQuestController>().EndQuestDebug();
-                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
-                                string[] tempArr = { "Is this about that weird mage that turned up!?", "No I don't know him! I don't know why he's here", "Yes I'll make sure he leaves soon." };
-                                DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
-                            }
-                            else
-                            {
-                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
-                            }
-                        }
-                    }
-                    if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("A Final Sacrifice"))
-                    {
-                        if (!QuestTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"])
-                        {
-                            try
-                            {
-                                if (RayHit.GetComponent<JonasController>().dialogue.name == "Jonas" && Vector3.Distance(NPCS["boy_home_1"].transform.position, NPCS["Jonas"].transform.position) <= 20)
-                                {
-                                    DialogueManager.GetComponent<DialogueManager>().evilEnd = true;
-                                    DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
-                                    string[] tempArr = { "Good. Good. He will make a fine tribute.", "Now make yourself scarce and don't look back." };
-                                    DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
-                                }
-                                else
-                                {
-                                    DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
-                                }
-                            }
-                            catch
-                            {
-                                if (RayHit.GetComponent<Generic_NPC>().dialogue.name == "Bert")
-                                {
-                                    DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
-                                    string[] tempArr = { "Ay yo what's popping?" };
-                                    DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
-
-                                }
-                                else
-                                {
-                                    DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
-                                }
-                            }
-
-
-
-                        }
-                    }
-
-                    //iamlosingmymind();
-
-                    NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
-                    NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
                 }
-                catch
+
+                if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("Mind of the King"))
+                {
+                    if (!QuestTracker.GetComponent<QuestTracker>().quests["Mind of the King"])
+                    {
+                        if (RayHit.GetComponent<Generic_NPC>().dialogue.name == NPCS["Jonas"].GetComponent<JonasController>().target)
+                        {
+                            mainQuestController.GetComponent<MainQuestController>().EndQuestDebug();
+                            DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
+                            string[] tempArr = { "Is this about that weird mage that turned up!?", "No I don't know him! I don't know why he's here", "Yes I'll make sure he leaves soon." };
+                            DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
+                            QuestTracker.GetComponent<QuestTracker>().questMarks[6].SetActive(false);
+                            QuestTracker.GetComponent<QuestTracker>().questMarks[11].SetActive(true);
+                        }
+                        else
+                        {
+                            DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
+                        }
+                    }
+                }
+                if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("A Final Sacrifice"))
+                {
+                    if (!QuestTracker.GetComponent<QuestTracker>().quests["A Final Sacrifice"])
+                    {
+                        if (rayData.collider.gameObject.name == "Jonas")
+                        {
+                            if (RayHit.GetComponent<JonasController>().dialogue.name == "Jonas" && Vector3.Distance(NPCS["boy_home_1"].transform.position, NPCS["Jonas"].transform.position) <= 20)
+                            {
+                                Debug.Log("Denna borde funka");
+                                DialogueManager.GetComponent<DialogueManager>().evilEnd = true;
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
+                                string[] tempArr = { "Good. Good. He will make a fine tribute.", "Now make yourself scarce and don't look back." };
+                                DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
+                            }
+                            else
+                            {
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
+                            }
+                        }
+                        else
+                        {
+                            if (RayHit.GetComponent<Generic_NPC>().dialogue.name == "Bert")
+                            {
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = true;
+                                string[] tempArr = { "Ay yo what's popping?" };
+                                DialogueManager.GetComponent<DialogueManager>().SetNewSentences(tempArr);
+
+                            }
+                            else
+                            {
+                                DialogueManager.GetComponent<DialogueManager>().targetQuestDialogueBool = false;
+                            }
+                        }
+
+
+
+                    }
+                }
+
+                //iamlosingmymind();
+
+
+
+                if (rayData.collider.gameObject == fuckerMan)
                 {
                     NPCS[RayHit.name].GetComponent<JonasController>().RecieveDialogueBool(true);
                     NPCS[RayHit.name].GetComponent<JonasController>().TriggerDialogue();
-
                 }
-                finally
+                else
                 {
-                    Console.WriteLine("mate shits fucked you need to do something");
+                    NPCS[RayHit.name].GetComponent<Generic_NPC>().RecieveDialogueBool(true);
+                    NPCS[RayHit.name].GetComponent<Generic_NPC>().TriggerDialogue();
                 }
+
+
             }
             if (rayData.collider.CompareTag("well"))
             {
@@ -321,13 +333,14 @@ public class SC_TPSController : MonoBehaviour
                 }
                 else { keyIndicator.SetActive(false); }
             }
-            else if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("the sentient well"))
+            else if (QuestTracker.GetComponent<QuestTracker>().quests.ContainsKey("The Sentient Well"))
             {
-                if (!QuestTracker.GetComponent<QuestTracker>().quests["the sentient well"])
+                if (!QuestTracker.GetComponent<QuestTracker>().quests["The Sentient Well"])
                 {
 
                     if (ray.collider.CompareTag("well"))
                     {
+
                         RayHit = ray.collider.gameObject;
                         rayData = ray;
                         validObject = true;

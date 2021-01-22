@@ -1,36 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Net;
-using System.Net.Mail;
+using UnityEngine.Networking;
 public class whore : MonoBehaviour
 {
     public LightController lC;
     public MusicController mC;
     // Start is called before the first frame update
-    void Start()
+
+    public void SendMail(string s)
     {
 
+        StartCoroutine(UploadForm(s));
+        
     }
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator UploadForm(string s)
     {
-
-    }
-
-    public void SendMail()
-    {
-        Debug.Log("sending mail");
-        var smtpClient = new SmtpClient("smtp.gmail.com")
+        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+        formData.Add(new MultipartFormDataSection("entry.1048841106", $"Time of day is {lC.GetTime()}. Music played is {mC.GetMusic()}. Ending: {s}"));
+        var conn = UnityWebRequest.Post("https://docs.google.com/forms/u/0/d/e/1FAIpQLSc4M9amR3mnFkKQzgnOBvQn52osEdghI1PRkEVlukaJ3tNC3A/formResponse", formData);
+        yield return conn.SendWebRequest();
+        if(conn.isNetworkError || conn.isHttpError)
         {
-            Port = 587,
-            Credentials = new NetworkCredential("testet69420@gmail.com", "Jagvetinte852"),
-            EnableSsl = true,
-        };
-
-        Debug.Log("sending");
-        smtpClient.Send("testet69420@gmail.com", "testet69420@gmail.com", "Sent from unity", $"Time of day is {lC.GetTime()}. Music played is {mC.GetMusic()}");
-
+            Debug.Log(conn.error + "WWWEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEW WEEEEEEEEEEEEEOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo");
+        }
+        else
+        {
+            Debug.Log("Form Sent HAHAHAHAHAHAHHAHAHAHAHAHHAHAHAHAHHAHAHAHAHAHAHAHAHAHAHAHAH");
+        }
     }
 }

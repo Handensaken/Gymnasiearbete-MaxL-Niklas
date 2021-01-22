@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            try
+            if(player.GetComponent<SC_TPSController>().RayHit.name != "Jonas")
             {
 
                 if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().hasQuest)
@@ -105,7 +105,7 @@ public class DialogueManager : MonoBehaviour
                     GenericSentences();
                 }
             }
-            catch
+            else
             {
                 if (!SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted && !activeQuest && SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().hasQuest)
                 {
@@ -252,15 +252,16 @@ public class DialogueManager : MonoBehaviour
     {
         if (!isWell)
         {
-            try
+            if(player.GetComponent<SC_TPSController>().RayHit.name!="Jonas")
             {
                 SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<Generic_NPC>().greeted = true;
             }
-            catch
+            else
             {
                 SC_TPSController.NPCS[player.GetComponent<SC_TPSController>().RayHit.name].GetComponent<JonasController>().greeted = true;
             }
         }
+
         animator.SetBool("isActive", false);
         finaleButtonParent.SetActive(false);
         buttonParent.SetActive(false);
@@ -326,6 +327,8 @@ public class DialogueManager : MonoBehaviour
                 sentences.Enqueue(result);
                 sentences.Enqueue("THE WELL IS PLEASED");
                 DisplayNextSentence();
+                questTracker.GetComponent<QuestTracker>().questMarks[11].SetActive(true);
+                questTracker.GetComponent<QuestTracker>().questMarks[10].SetActive(false);
                 return;
             }
             else
