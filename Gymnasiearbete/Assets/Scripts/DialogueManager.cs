@@ -250,6 +250,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     //ends the dialogue by sending a bool to the animator that then removes the dialogue box
     {
+        questTracker.GetComponent<QuestTracker>().noCount = 0;
         if (!isWell)
         {
             if(player.GetComponent<SC_TPSController>().RayHit.name!="Jonas")

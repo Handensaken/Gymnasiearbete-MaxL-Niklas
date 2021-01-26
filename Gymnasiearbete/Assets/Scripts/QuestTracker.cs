@@ -44,6 +44,8 @@ public class QuestTracker : MonoBehaviour
             EndQuest();
             StartCoroutine(Indicate("HANS said I should go to him when I had greeted everyone", 18));
             questMarks[8].SetActive(true);
+            Debug.Log(questMarks[8]);
+            Debug.Log(questMarks[8].name);
         }
     }
 
@@ -92,6 +94,8 @@ public class QuestTracker : MonoBehaviour
         {
             questMarks[11].SetActive(false);
             questMarks[6].SetActive(true);
+            Debug.Log(questMarks[6].name);
+            Debug.Log(questMarks[6]);
         }
         else if (!quests["A Final Sacrifice"])
         {
@@ -108,7 +112,7 @@ public class QuestTracker : MonoBehaviour
         dialogueManager.GetComponent<DialogueManager>().activeQuest = false;
     }
 
-    private int noCount = 0;
+    public int noCount = 0;
     public void FinalQuestNo()
     {
         dialogueManager.GetComponent<DialogueManager>().buttonParent.SetActive(false);
